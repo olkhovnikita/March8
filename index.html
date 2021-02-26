@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поздравь коллегу с 8 марта!</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="components/my-header/my-header.css">
+    <link rel="stylesheet" href="components/start/start.css">
+    <link rel="stylesheet" href="components/choose/choose.css">
+    <link rel="stylesheet" href="components/add-info/add-info.css">
+    <link rel="stylesheet" href="components/make-a-pic/make-a-pic.css">
+    <link rel="stylesheet" href="components/add-effect/add-effect.css">
+    <link rel="stylesheet" href="components/postcard-ready/postcard-ready.css">
+    <link rel="stylesheet" href="components/send-postcard/send-postcard.css">
+    <link rel="stylesheet" href="components/final/final.css">
+    <link rel="stylesheet" href="components/my-footer/my-footer.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+
+<body>
+    <img class="logo" src="img/logo.png" alt="logo">
+    <div class="container">
+        <div id="content">
+            <my-header :page='page'></my-header>
+            <start v-if="page == 'start'" @page-number="page = $event" @template-number="templateId = $event"
+                :template="templateId"></start>
+            <choose v-if="page == 'choose'" @page-number="page = $event" @template-number="templateId = $event"
+                :template="templateId">
+            </choose>
+            <add-info v-if="page == 'add-info'" @page-number="page = $event" @name='name= $event'
+                @customSlogan='customSlogan = $event' @set-slogan-id='sloganId = $event' :slogan-id='sloganId'
+                @template-number="templateId = $event" :template="templateId"></add-info>
+            <make-a-pic v-if="page == 'make-a-pic'" @page-number="page = $event" @template-number="templateId = $event"
+                :template="templateId"></make-a-pic>
+            <add-effect v-if="page == 'add-effect'" @page-number="page = $event" @template-number="templateId = $event"
+                :template="templateId"></add-effect>
+            <postcard-ready v-if="page == 'postcard-ready'" @page-number="page = $event"
+                @template-number="templateId = $event" :template="templateId"></postcard-ready>
+            <send-postcard v-if="page == 'send-postcard'" @page-number="page = $event"
+                @template-number="templateId = $event" :template="templateId"></send-postcard>
+            <final v-if="page == 'final'" @page-number="page = $event" @template-number="templateId = $event"
+                :template="templateId"></final>
+        </div>
+    </div>
+
+    <div class='footer'>
+        <img src="img/text_logo.png" alt="Rostelecom">
+    </div>
+    <script src="components/my-header/my-header.js"></script>
+    <script src="components/start/start.js"></script>
+    <script src="components/choose/choose.js"></script>
+    <script src="components/add-info/add-info.js"></script>
+    <script src="components/make-a-pic/make-a-pic.js"></script>
+    <script src="components/add-effect/add-effect.js"></script>
+    <script src="components/postcard-ready/postcard-ready.js"></script>
+    <script src="components/send-postcard/send-postcard.js"></script>
+    <script src="components/final/final.js"></script>
+    <script src="components/my-footer/my-footer.js"></script>
+    <script src="components/main.js"></script>
+</body>
+
+</html>

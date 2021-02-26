@@ -1,0 +1,126 @@
+@font-face {
+    font-family: "Rostelecom Basis Regular";
+    src: url("../fonts/Rostelecom/82fe5070fde20170ec8414053d0f340d.eot");
+    /* IE9*/
+    src: url("../fonts/Rostelecom/82fe5070fde20170ec8414053d0f340d.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../fonts/Rostelecom/82fe5070fde20170ec8414053d0f340d.woff2") format("woff2"), /* chrome、firefox */
+    url("../fonts/Rostelecom/82fe5070fde20170ec8414053d0f340d.woff") format("woff"), /* chrome、firefox */
+    url("../fonts/Rostelecom/82fe5070fde20170ec8414053d0f340d.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url("../fonts/Rostelecom/82fe5070fde20170ec8414053d0f340d.svg#Rostelecom Basis Regular") format("svg");
+    /* iOS 4.1- */
+}
+
+/*Обнуление*/
+
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+/*Меняет подсчет ширины блока*/
+
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/*Убираем линии обводки*/
+
+:focus, :active {
+    outline: none;
+}
+
+a:focus, a:active {
+    outline: none;
+}
+
+/*Делает эти элементы блочными*/
+
+nav, footer, header, aside {
+    display: block;
+}
+
+/*Уравнивает поведение шрифтов в разных браузерах
+    и на телефонах убирает самовольное увеличение шрифтов*/
+
+html, body {
+    min-height: 100%;
+    line-height: 1.5;
+    font-size: 14px;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+/*Просим эти теги наследовать семейство шрифта*/
+
+input, button, textarea {
+    font-family: inherit;
+}
+
+/*Убираются некоторые особенности для разных браузеров*/
+
+input::-ms-clear {
+    display: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+button::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+}
+
+a, a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+ul li {
+    list-style: none;
+}
+
+img {
+    vertical-align: top;
+}
+
+/*Обнуляем все стили заголовков*/
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: inherit;
+    font-weight: 400;
+}
+
+/*--------------------*/
+
+.logo {
+    position: absolute;
+    top: 1%;
+    left: 1%;
+}
+
+body {
+    background: url(../img/background.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-bottom: 150px;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1920px;
+}
+
+@media(max-width: 768px){
+    .logo {
+        display: none;
+    }
+}
