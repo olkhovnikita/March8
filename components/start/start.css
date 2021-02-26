@@ -1,0 +1,40 @@
+.start {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    vertical-align: middle;
+    flex-wrap: wrap;
+    margin-top: 60px;
+}
+
+.start-btn {
+    background-color: #65bbdf;
+    border-radius: 70px;
+    font-family: 'Rostelecom Basis Regular', sans-serif;
+    font-size: 72.1px;
+    font-weight: 700;
+    color: #ffffff;
+    padding: 15px 40px;
+}
+
+.start-form-text {
+    display: none;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .start-form-text {
+        display: block;
+    }
+
+    .start-btn {
+        font-size: 26px;
+    }
+
+    .start-form-text {
+        font-size: 16px !important;
+        text-align: center !important;
+    }
+
+}

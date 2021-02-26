@@ -1,0 +1,72 @@
+.choose-text {
+    text-align: center;
+    font-family: 'Rostelecom Basis Regular', sans-serif;
+    font-size: 50.4px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.examples {
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1920px;
+}
+
+.example {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 495px;
+    height: 278px;
+    margin: 10px 15px;
+    position: relative;
+    box-shadow: 0 0 10px 8px rgb(159, 72, 240);
+}
+
+.example.active::before {
+    position: absolute;
+    content: '';
+    background: rgba(101, 187, 223, 0.8);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    z-index: 1;
+}
+
+.next {
+    display: flex;
+    justify-content: center;
+}
+
+.next-btn {
+    margin-top: 20px;
+    background-color: #65bbdf;
+    font-family: 'Rostelecom Basis Regular', sans-serif;
+    font-size: 37.1px;
+    font-weight: 700;
+    color: #ffffff;
+    border-radius: 50px;
+    padding: 16px 70px;
+}
+
+@media(max-width: 768px){
+    .header:not(:first-child) {
+        display: none;
+    }
+
+    .choose-text {
+        font-size: 20px;
+        padding: 35px 5px;
+    }
+
+    .example {
+        background-size: 100% 100%;
+        width: 235px;
+        height: 152px;
+        margin: 7px 11px;
+    }
+}

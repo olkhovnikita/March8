@@ -1,0 +1,42 @@
+.header {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.header img {
+    max-width: 100%;
+}
+
+.create-text {
+    font-family: 'Rostelecom Basis Regular', sans-serif;
+    font-size: 54px;
+    font-weight: 700;
+    color: #65bbdf;
+    margin: 50px 10px 0 -15px;
+    padding-left: 20px;
+    border-left: 3px solid #65bbdf;
+    display: table;
+}
+
+.create-text span {
+    color: #ffffff;
+}
+
+@media(max-width: 768px) {
+    .create-text {
+        font-size: 30px;
+        font-weight: 700;
+        color: #65bbdf;
+        margin: 50px 10px 0 5px;
+    }
+    .header[aria-page='choose'],
+    .header[aria-page='add-effect'],
+    .header[aria-page='add-info'],
+    .header[aria-page='make-a-pic'],
+    .header[aria-page='postcard-ready'],
+    .header[aria-page='send-postcard'] {
+        display: none;
+    }
+}
