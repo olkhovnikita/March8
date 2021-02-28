@@ -42,6 +42,9 @@ var addInfo = Vue.component('add-info', {
             var name = document.getElementById('name');
             var customSlogan = document.getElementById('customSlogan');
             
+            this.$emit('name', name);
+            this.$emit('custom-slogan', customSlogan);
+            
             console.log(name.value);
             console.log(customSlogan.value);
 

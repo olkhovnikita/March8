@@ -1,8 +1,9 @@
 .square {
-    max-width: 668px;
+    width: 668px;
     height: 376px;
     background-color: #fff;
     margin: 0 auto;
+    display: block;
 }
 
 .pic-form-text {

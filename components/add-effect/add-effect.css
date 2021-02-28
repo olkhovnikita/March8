@@ -1,0 +1,65 @@
+.effect-text {
+    text-align: center;
+    font-family: 'Rostelecom Basis Regular', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: #ffffff;
+}
+
+.add-effect {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.effects {
+    position: relative;
+}
+
+.choose-effect-btn {
+    cursor: pointer;
+}
+
+.effects-options {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: absolute;
+    background: #ffffff;
+    left: 100%;
+    top: 0;
+    padding: 17px;
+    border-bottom-left-radius: 50px;
+    border-top-right-radius: 50px;
+    visibility: hidden;
+}
+
+.effects-options img {
+    margin: 0 10px;
+}
+
+.stickers {
+    position: relative;
+}
+
+.stickers-options {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    background: #ffffff;
+    padding: 10px;
+    border-bottom-left-radius: 50px;
+    border-top-right-radius: 50px;
+    visibility: hidden;
+    top: 175% !important;
+}
+
+.img-row img {
+    margin: 5px 24px;
+}
+
+.effect-active {
+    outline: 1px solid #111;
+}

@@ -1,0 +1,21 @@
+.my-canvas {
+    background: #eee;
+    padding: 0;
+    height: 80vh;
+    width: 100%;
+}
+
+#myCanvas {
+    display: block;
+    height: 78vh;
+    width: 100%;
+}
+
+#savedImageCopy {
+    display: none;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+}

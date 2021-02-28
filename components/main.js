@@ -7,7 +7,8 @@ new Vue({
         'make-a-pic': makeAPic,
         'add-effect': addEffect,
         'postcard-ready': postcardReady,
-        'send-postcard': sendPostcard
+        'send-postcard': sendPostcard,
+        'my-canvas': myCanvas
         },
     el: '#content',
     data: {
@@ -17,6 +18,7 @@ new Vue({
         croppedImg: '',
         sloganId: 0,
         name: '',
-        customSlogan: ''
+        customSlogan: '',
+        customImg: 'img/startdrawing.png'
     }
 })

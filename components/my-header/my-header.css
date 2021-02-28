@@ -24,6 +24,10 @@
     color: #ffffff;
 }
 
+.header[aria-page='my-canvas']{
+    display: none;
+}
+
 @media(max-width: 768px) {
     .create-text {
         font-size: 30px;

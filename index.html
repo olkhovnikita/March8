@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="components/choose/choose.css">
     <link rel="stylesheet" href="components/add-info/add-info.css">
     <link rel="stylesheet" href="components/make-a-pic/make-a-pic.css">
+    <link rel="stylesheet" href="components/canvas/canvas.css">
     <link rel="stylesheet" href="components/add-effect/add-effect.css">
     <link rel="stylesheet" href="components/postcard-ready/postcard-ready.css">
     <link rel="stylesheet" href="components/send-postcard/send-postcard.css">
@@ -21,7 +22,7 @@
 </head>
 
 <body>
-    <img class="logo" src="img/logo.png" alt="logo">
+    <!-- <img class="logo" src="img/logo.png" alt="logo"> -->
     <div class="container">
         <div id="content">
             <my-header :page='page'></my-header>
@@ -33,8 +34,10 @@
             <add-info v-if="page == 'add-info'" @page-number="page = $event" @name='name= $event'
                 @customSlogan='customSlogan = $event' @set-slogan-id='sloganId = $event' :slogan-id='sloganId'
                 @template-number="templateId = $event" :template="templateId"></add-info>
-            <make-a-pic v-if="page == 'make-a-pic'" @page-number="page = $event" @template-number="templateId = $event"
+            <make-a-pic v-if="page == 'make-a-pic'" :custom-img='customImg' @page-number="page = $event" @template-number="templateId = $event"
                 :template="templateId"></make-a-pic>
+            <my-canvas v-if="page == 'my-canvas'" @page-number="page = $event" @custom-img='customImg = $event' @template-number="templateId = $event"
+                :template="templateId"></my-canvas>
             <add-effect v-if="page == 'add-effect'" @page-number="page = $event" @template-number="templateId = $event"
                 :template="templateId"></add-effect>
             <postcard-ready v-if="page == 'postcard-ready'" @page-number="page = $event"
@@ -49,11 +52,13 @@
     <div class='footer'>
         <img src="img/text_logo.png" alt="Rostelecom">
     </div>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="components/my-header/my-header.js"></script>
     <script src="components/start/start.js"></script>
     <script src="components/choose/choose.js"></script>
     <script src="components/add-info/add-info.js"></script>
     <script src="components/make-a-pic/make-a-pic.js"></script>
+    <script src="components/canvas/canvas.js"></script>
     <script src="components/add-effect/add-effect.js"></script>
     <script src="components/postcard-ready/postcard-ready.js"></script>
     <script src="components/send-postcard/send-postcard.js"></script>
