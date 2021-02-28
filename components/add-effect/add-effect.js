@@ -1,3 +1,6 @@
+var bgImg;
+var customImg;
+
 var addEffect = Vue.component('add-effect', {
     props: ['template', 'slogan', 'customImg'],
     template:
@@ -65,26 +68,96 @@ var addEffect = Vue.component('add-effect', {
         },
     },
     mounted() {
+        function fragmentText(text, maxWidth, ctx) {
+            var words = text.split(' '),
+                lines = [],
+                line = "";
+            if (ctx.measureText(text).width < maxWidth) {
+                return [text];
+            }
+            while (words.length > 0) {
+                var split = false;
+                while (ctx.measureText(words[0]).width >= maxWidth) {
+                    var tmp = words[0];
+                    words[0] = tmp.slice(0, -1);
+                    if (!split) {
+                        split = true;
+                        words.splice(1, 0, tmp.slice(-1));
+                    } else {
+                        words[1] = tmp.slice(-1) + words[1];
+                    }
+                }
+                if (ctx.measureText(line + words[0]).width < maxWidth) {
+                    line += words.shift() + " ";
+                } else {
+                    lines.push(line);
+                    line = "";
+                }
+                if (words.length === 0) {
+                    lines.push(line);
+                }
+            }
+            return lines;
+        }
 
+        bgImg = new Image();
+        if(this.$props.customImg != undefined){
+            customImg = new Image();
+            customImg.src = this.$props.customImg;
+        }
+        
+        switch (this.$props.template) {
+            case '1':
+                bgImg.src = 'img/example_1.png'
+                break;
+            case '2':
+                bgImg.src = 'img/example_2.png'
+                break;
+            case '3':
+                bgImg.src = 'img/example_3.png'
+                break;
+        }        
 
         this.$nextTick(function () {
-
-            var img = new Image();
-
             var draw = document.getElementById('selectedImg');
             var drawContext = draw.getContext("2d");
-            var result;
+            drawContext.drawImage(bgImg, 0, 0, 1920, 1080);
+
+            if(customImg != undefined){
+                drawContext.drawImage(customImg, 0, 0, 1920, 1080);
+            }
+                
+            
+            drawContext.textAlign = "center";
+           
             switch (this.$props.template) {
                 case '1':
-                    result = 'img/example_1.png'
+                    var fontsize = 50;
+                    drawContext.font = fontsize + 'px serif';
+                    var lines = fragmentText(this.$props.slogan, 650 - parseInt(fontsize,0), drawContext);
+                    lines.forEach(function(line, i) {
+                        drawContext.fillText(line, 365 + 650 / 2, 390 + (i + 1) * parseInt(fontsize,0));
+                    });
+                    break;
                 case '2':
-                    result = 'img/example_2.png'
+                    var fontsize = 50;
+                    drawContext.font = fontsize + 'px serif';
+                    var lines = fragmentText(this.$props.slogan, 850 - parseInt(fontsize,0), drawContext);
+                    lines.forEach(function(line, i) {
+                        drawContext.fillText(line, 500 + 850 / 2, 400 + (i + 1) * parseInt(fontsize,0));
+                    });
+                    //drawContext.fillText(this.$props.slogan, 0, 50, 200);
+                    break;
                 case '3':
-                    result = 'img/example_3.png'
-            }
-
-            img.src = result;
-            drawContext.drawImage(img, 0, 0, 1920, 1080);
+                    var fontsize = 40;
+                    drawContext.font = fontsize + 'px serif';
+                    var lines = fragmentText(this.$props.slogan, 520 - parseInt(fontsize,0), drawContext);
+                    lines.forEach(function(line, i) {
+                        drawContext.fillText(line, 850 + 520 / 2, 430 + (i + 1) * parseInt(fontsize,0));
+                    });
+                    //drawContext.fillText(this.$props.slogan, 0, 50, 200);
+                    break;
+                }
         })
 
     },
