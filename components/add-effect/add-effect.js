@@ -135,6 +135,7 @@ var addEffect = Vue.component('add-effect', {
                     }
                     var fontsize = 50;
                     drawContext.font = fontsize + 'px serif';
+                    drawContext.fillStyle = '#993def';
                     var lines = fragmentText(this.$props.slogan, 650 - parseInt(fontsize,0), drawContext);
                     lines.forEach(function(line, i) {
                         drawContext.fillText(line, 365 + 650 / 2, 390 + (i + 1) * parseInt(fontsize,0));
@@ -146,6 +147,7 @@ var addEffect = Vue.component('add-effect', {
                     }
                     var fontsize = 50;
                     drawContext.font = fontsize + 'px serif';
+                    drawContext.fillStyle = '#993def';
                     var lines = fragmentText(this.$props.slogan, 850 - parseInt(fontsize,0), drawContext);
                     lines.forEach(function(line, i) {
                         drawContext.fillText(line, 500 + 850 / 2, 400 + (i + 1) * parseInt(fontsize,0));
@@ -157,6 +159,7 @@ var addEffect = Vue.component('add-effect', {
                     }
                     var fontsize = 40;
                     drawContext.font = fontsize + 'px serif';
+                    drawContext.fillStyle = '#993def';
                     var lines = fragmentText(this.$props.slogan, 520 - parseInt(fontsize,0), drawContext);
                     lines.forEach(function(line, i) {
                         drawContext.fillText(line, 850 + 520 / 2, 430 + (i + 1) * parseInt(fontsize,0));
