@@ -12,7 +12,7 @@ new Vue({
         },
     el: '#content',
     data: {
-        page: 'start',
+        page: 'my-canvas',
         templateId: null,
         img: null,
         croppedImg: '',
