@@ -26,74 +26,74 @@ var availableObjects = [
     },
     {
         "name": "greyFlower",
-        "width": "75",
-        "height": "51",
+        "width": "750",
+        "height": "510",
         "img": "1.png"
     },
     {
         "name": "tulip",
-        "width": "40",
-        "height": "69",
+        "width": "400",
+        "height": "690",
         "img": "2.png"
     },
     {
         "name": "shoe",
-        "width": "49",
-        "height": "48",
+        "width": "490",
+        "height": "480",
         "img": "3.png"
     },
     {
         "name": "butterfly",
-        "width": "70",
-        "height": "68",
+        "width": "700",
+        "height": "680",
         "img": "4.png"
     },
     {
         "name": "bear",
-        "width": "64",
-        "height": "64",
+        "width": "640",
+        "height": "640",
         "img": "5.png"
     },
     {
         "name": "gift",
-        "width": "54",
-        "height": "54",
+        "width": "540",
+        "height": "540",
         "img": "6.png"
     },
     {
         "name": "cat",
-        "width": "81",
-        "height": "52",
+        "width": "810",
+        "height": "520",
         "img": "7.png"
     },
     {
         "name": "rose",
-        "width": "70",
-        "height": "68",
+        "width": "700",
+        "height": "680",
         "img": "8.png"
     },
     {
         "name": "heart",
-        "width": "52",
-        "height": "48",
+        "width": "520",
+        "height": "480",
         "img": "9.png"
     },
     {
         "name": "lipstick",
-        "width": "76",
-        "height": "38",
+        "width": "760",
+        "height": "380",
         "img": "10.png"
     },
     {
         "name": "bouquet",
-        "width": "62",
-        "height": "70",
+        "width": "620",
+        "height": "700",
         "img": "11.png"
     },
     {
         "name": "like",
-        "width": "58",
-        "height": "62",
+        "width": "580",
+        "height": "620",
         "img": "12.png"
     }
 
