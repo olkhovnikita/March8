@@ -6,6 +6,7 @@
     vertical-align: middle;
     flex-wrap: wrap;
     margin-top: 60px;
+    min-height: 100%;
 }
 
 .start-btn {

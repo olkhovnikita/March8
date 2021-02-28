@@ -1,17 +1,17 @@
 var addEffect = Vue.component('add-effect', {
-    props: ['template'],
+    props: ['template', 'slogan', 'customImg'],
     template:
         `
     <div class='add-info'>
         <div class='add-effect'>
             <div>
                 <p class='choose-text'>Добавь немного праздника</p>
-                <canvas class='example'>
+                <canvas id='selectedImg' class='example' ></canvas>
                 <p class='form-text pic-form-text'>Выбери стикер или эффект в меню справа</p>
             </div>
             <div class='choose-effect'>
                 <div class='effects choose-effect-btn'>
-                    <img id='popcorn' src='img/stars.png' @click="this.document.getElementById('effects').style.visibility = 'visible'">
+                    <img id='popcorn' src='img/stars.png'>
                     <p class='effect-text'>эффекты</p>
                     <div id='effects' class='effects-options'>
                     <img src='img/stars.png' :class="template=='star1' ? 'effect effect-active' : 'effect'" @click="setSceneId('star1')">
@@ -20,7 +20,7 @@ var addEffect = Vue.component('add-effect', {
                 </div>
                 </div>
                     <div class='stickers choose-effect-btn'>
-                    <img src='img/effects.png' @click="this.document.getElementById('stickers').style.visibility = 'visible'">
+                    <img src='img/effects.png'>
                     <p class='effect-text'>стикеры</p>
                     <div id='stickers' class='stickers-options'>
                     <div class='img-row'>
@@ -55,59 +55,37 @@ var addEffect = Vue.component('add-effect', {
         </div>
     </div>
     `,
-
     methods: {
         changePage: function (data) {
             this.$emit('page-number', data);
-        },
-        src: function (template) {
-            switch (template) {
-                case '1':
-                    return 'img/example_1.png'
-                case '2':
-                    return 'img/example_2.png'
-                case '3':
-                    return 'img/example_3.png'
-            }
+            console.log(src);
         },
         setSceneId: function (data) {
             this.$emit('template-number', data);
         },
     },
     mounted() {
-        const popcorn = document.querySelector('#popcorn');
-        var tooltip = document.querySelector('#effects');
-        Popper.createPopper(popcorn, tooltip, {
-            placement: 'right',
-            modifiers: [
-                {
-                    name: 'offset',
-                    options: {
-                        offset: [0, 8],
-                    },
-                },
-            ],
-        });
-        const pop_corn = document.querySelector('#popcorn');
-        var tool_tip = document.querySelector('#stickers');
-        Popper.createPopper(pop_corn, tool_tip, {
-            placement: 'right',
-            modifiers: [
-                {
-                    name: 'offset',
-                    options: {
-                        offset: [0, 8],
-                    },
-                },
-            ],
-        });
+
+
+        this.$nextTick(function () {
+
+            var img = new Image();
+
+            var draw = document.getElementById('selectedImg');
+            var drawContext = draw.getContext("2d");
+            var result;
+            switch (this.$props.template) {
+                case '1':
+                    result = 'img/example_1.png'
+                case '2':
+                    result = 'img/example_2.png'
+                case '3':
+                    result = 'img/example_3.png'
+            }
+
+            img.src = result;
+            drawContext.drawImage(img, 10, 10);
+        })
 
     },
-
-    computed: function () {
-        canvas = document.getElementById("drawingCanvas");
-        context = canvas.getContext("2d");
-
-        context.drawImage(src(template), 10, 10);
-    }
 })

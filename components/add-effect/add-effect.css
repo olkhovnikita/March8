@@ -32,7 +32,6 @@
     padding: 17px;
     border-bottom-left-radius: 50px;
     border-top-right-radius: 50px;
-    visibility: hidden;
 }
 
 .effects-options img {
@@ -52,7 +51,6 @@
     padding: 10px;
     border-bottom-left-radius: 50px;
     border-top-right-radius: 50px;
-    visibility: hidden;
     top: 175% !important;
 }
 

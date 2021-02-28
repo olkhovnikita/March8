@@ -33,6 +33,7 @@ var myCanvas = Vue.component('my-canvas', {
                 console.log(customImg);
                 this.$emit('page-number', 'make-a-pic');
                 this.$emit('custom-img', customImg);
+
             }
         },
         changePage: function (data) {
@@ -94,14 +95,6 @@ var myCanvas = Vue.component('my-canvas', {
               }, false);
               
 
-
-            //canvas.addEventListener('touchend',  stopDrawing);
-            //canvas.addEventListener('touchmove',  draw);
-            //canvas.touchend = stopDrawing;
-           // canvas.onmouseout = stopDrawing;
-            //canvas.touchmove = draw;
-
-
             function startDrawing(e) {
                 // Начинаем рисовать
                 isDrawing = true;
@@ -112,7 +105,7 @@ var myCanvas = Vue.component('my-canvas', {
                 // Нажатием левой кнопки мыши помещаем "кисть" на холст
                 context.moveTo(e.pageX - canvas.offsetLeft, e.pageY - canvas.offsetTop);
 
-                context.strokeStyle = 'black';
+                context.strokeStyle = '#993def';
                 context.lineWidth = 1;
             }
             function draw(e) {

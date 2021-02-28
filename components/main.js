@@ -19,6 +19,6 @@ new Vue({
         sloganId: 0,
         name: '',
         customSlogan: '',
-        customImg: 'img/startdrawing.png'
+        customImg: 'img/startdrawing.png',
     }
 })

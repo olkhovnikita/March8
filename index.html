@@ -32,14 +32,13 @@
                 :template="templateId">
             </choose>
             <add-info v-if="page == 'add-info'" @page-number="page = $event" @name='name= $event'
-                @customSlogan='customSlogan = $event' @set-slogan-id='sloganId = $event' :slogan-id='sloganId'
-                @template-number="templateId = $event" :template="templateId"></add-info>
-            <make-a-pic v-if="page == 'make-a-pic'" :custom-img='customImg' @page-number="page = $event" @template-number="templateId = $event"
-                :template="templateId"></make-a-pic>
-            <my-canvas v-if="page == 'my-canvas'" @page-number="page = $event" @custom-img='customImg = $event' @template-number="templateId = $event"
-                :template="templateId"></my-canvas>
-            <add-effect v-if="page == 'add-effect'" @page-number="page = $event" @template-number="templateId = $event"
-                :template="templateId"></add-effect>
+                @slogan='customSlogan = $event' :slogan='customSlogan' @template-number="templateId = $event" :template="templateId"></add-info>
+            <make-a-pic v-if="page == 'make-a-pic'" @custom-img='customImg' @page-number="page = $event"
+                @template-number="templateId = $event" :template="templateId"></make-a-pic>
+            <my-canvas v-if="page == 'my-canvas'" @page-number="page = $event" @custom-img='customImg = $event'
+                @template-number="templateId = $event" :template="templateId"></my-canvas>
+            <add-effect v-if="page == 'add-effect'" :img='img' :custom-img='customImg' @page-number="page = $event"
+                @template-number="templateId = $event" :slogan='customSlogan' :template="templateId"></add-effect>
             <postcard-ready v-if="page == 'postcard-ready'" @page-number="page = $event"
                 @template-number="templateId = $event" :template="templateId"></postcard-ready>
             <send-postcard v-if="page == 'send-postcard'" @page-number="page = $event"
@@ -47,12 +46,11 @@
             <final v-if="page == 'final'" @page-number="page = $event" @template-number="templateId = $event"
                 :template="templateId"></final>
         </div>
-    </div>
 
+    </div>
     <div class='footer'>
         <img src="img/text_logo.png" alt="Rostelecom">
     </div>
-    <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="components/my-header/my-header.js"></script>
     <script src="components/start/start.js"></script>
     <script src="components/choose/choose.js"></script>

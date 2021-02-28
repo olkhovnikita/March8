@@ -46,7 +46,6 @@ nav, footer, header, aside {
     и на телефонах убирает самовольное увеличение шрифтов*/
 
 html, body {
-    min-height: 100%;
     line-height: 1.5;
     font-size: 14px;
     -ms-text-size-adjust: 100%;
@@ -111,16 +110,17 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    position: relative;
     padding-bottom: 150px;
+    min-height: 100vh;
 }
-
 
 .container {
     margin: 0 auto;
     max-width: 1920px;
 }
 
-@media(max-width: 768px){
+@media(max-width: 768px) {
     .logo {
         display: none;
     }
