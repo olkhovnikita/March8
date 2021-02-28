@@ -6,7 +6,7 @@ var addEffect = Vue.component('add-effect', {
         <div class='add-effect'>
             <div>
                 <p class='choose-text'>Добавь немного праздника</p>
-                <canvas id='selectedImg' class='example' ></canvas>
+                <canvas id='selectedImg' class='example' width='1920' height='1080'></canvas>
                 <p class='form-text pic-form-text'>Выбери стикер или эффект в меню справа</p>
             </div>
             <div class='choose-effect'>
@@ -84,7 +84,7 @@ var addEffect = Vue.component('add-effect', {
             }
 
             img.src = result;
-            drawContext.drawImage(img, 10, 10);
+            drawContext.drawImage(img, 0, 0, 1920, 1080);
         })
 
     },

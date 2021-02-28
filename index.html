@@ -34,7 +34,7 @@
             <add-info v-if="page == 'add-info'" @page-number="page = $event" @name='name= $event'
                 @slogan='customSlogan = $event' :slogan='customSlogan' @template-number="templateId = $event" :template="templateId"></add-info>
             <make-a-pic v-if="page == 'make-a-pic'" @custom-img='customImg' @page-number="page = $event"
-                @template-number="templateId = $event" :template="templateId"></make-a-pic>
+                @template-number="templateId = $event" :template="templateId" :custom-img='customImg'></make-a-pic>
             <my-canvas v-if="page == 'my-canvas'" @page-number="page = $event" @custom-img='customImg = $event'
                 @template-number="templateId = $event" :template="templateId"></my-canvas>
             <add-effect v-if="page == 'add-effect'" :img='img' :custom-img='customImg' @page-number="page = $event"

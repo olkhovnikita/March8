@@ -3,7 +3,7 @@ var myCanvas = Vue.component('my-canvas', {
     template:
         `
         <div class='my-canvas'>
-            <canvas id='myCanvas' @click="initCanvas"></canvas>
+            <canvas id='myCanvas'></canvas>
             <div class="toolbar">
                 <button class='next-btn' @click="changePage('make-a-pic')">Назад</button>
                 <button class='next-btn' @click="clearCanvas()">&#10008</button>
