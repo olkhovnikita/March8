@@ -1,5 +1,103 @@
 var bgImg;
+var lines;
+var fontsize;
 var customImg;
+var topObjects = [];
+var selectedTop;
+var bgId;
+var availableObjects = [
+    {
+        "name": "star1",
+        "width": "100",
+        "height": "100",
+        "img": "stars.png"
+    },
+    {
+        "name": "star2",
+        "width": "100",
+        "height": "100",
+        "img": "stars2.png"
+    },
+    {
+        "name": "star3",
+        "width": "100",
+        "height": "100",
+        "img": "stars3.png"
+    },
+    {
+        "name": "greyFlower",
+        "width": "75",
+        "height": "51",
+        "img": "1.png"
+    },
+    {
+        "name": "tulip",
+        "width": "40",
+        "height": "69",
+        "img": "2.png"
+    },
+    {
+        "name": "shoe",
+        "width": "49",
+        "height": "48",
+        "img": "3.png"
+    },
+    {
+        "name": "butterfly",
+        "width": "70",
+        "height": "68",
+        "img": "4.png"
+    },
+    {
+        "name": "bear",
+        "width": "64",
+        "height": "64",
+        "img": "5.png"
+    },
+    {
+        "name": "gift",
+        "width": "54",
+        "height": "54",
+        "img": "6.png"
+    },
+    {
+        "name": "cat",
+        "width": "81",
+        "height": "52",
+        "img": "7.png"
+    },
+    {
+        "name": "rose",
+        "width": "70",
+        "height": "68",
+        "img": "8.png"
+    },
+    {
+        "name": "heart",
+        "width": "52",
+        "height": "48",
+        "img": "9.png"
+    },
+    {
+        "name": "lipstick",
+        "width": "76",
+        "height": "38",
+        "img": "10.png"
+    },
+    {
+        "name": "bouquet",
+        "width": "62",
+        "height": "70",
+        "img": "11.png"
+    },
+    {
+        "name": "like",
+        "width": "58",
+        "height": "62",
+        "img": "12.png"
+    }
+
+];
 
 var addEffect = Vue.component('add-effect', {
     props: ['template', 'slogan', 'customImg'],
@@ -64,10 +162,24 @@ var addEffect = Vue.component('add-effect', {
             console.log(src);
         },
         setSceneId: function (data) {
+            availableObjects.forEach(v => {
+                if(v.name === data){
+                    var selectedImg = new Image();
+                    selectedImg.src = "img/"+v.img;
+
+                    selectedTop = {
+                        "obj": selectedImg,
+                        "x": v.width,
+                        "height": v.height,
+                        "width": v.width
+                    }
+                }
+            });
             this.$emit('template-number', data);
         },
     },
     mounted() {
+        var draw;
         function fragmentText(text, maxWidth, ctx) {
             var words = text.split(' '),
                 lines = [],
@@ -99,44 +211,63 @@ var addEffect = Vue.component('add-effect', {
             }
             return lines;
         }
+        draw = document.getElementById('selectedImg');
+        var drawContext = draw.getContext("2d")
+
+        function clicked(e)
+        {
+            if(selectedTop != undefined){
+                let rect = draw.getBoundingClientRect(); 
+                let x = (1920/rect.width) * (e.clientX - rect.left); 
+                let y = (1080/rect.height) * (e.clientY - rect.top); 
+                selectedTop.x = x-(selectedTop.width/2);
+                selectedTop.y = y-(selectedTop.height/2);
+                var tmpSelObj = selectedTop;
+                topObjects.push(tmpSelObj)
+                drawing();
+            }
+        }
 
         bgImg = new Image();
         if(this.$props.customImg != undefined){
             customImg = new Image();
             customImg.src = this.$props.customImg;
         }
+;
         
         switch (this.$props.template) {
             case '1':
-                bgImg.src = 'img/example_1.png'
+                bgImg.src = 'img/example_1.png';
+                fontsize = 50;
+                lines = fragmentText(this.$props.slogan, 650 - parseInt(fontsize,0), drawContext);
                 break;
             case '2':
                 bgImg.src = 'img/example_2.png'
+                fontsize = 50;
+                lines = fragmentText(this.$props.slogan, 850 - parseInt(fontsize,0), drawContext);
                 break;
             case '3':
-                bgImg.src = 'img/example_3.png'
+                bgImg.src = 'img/example_3.png';
+                fontsize = 40;
+                lines = fragmentText(this.$props.slogan, 520 - parseInt(fontsize,0), drawContext);
                 break;
         }        
-        var draw = document.getElementById('selectedImg');
-        var drawContext = draw.getContext("2d");
 
-        this.$nextTick(function () {
+        draw.onmousedown = clicked;
+        bgId = this.$props.template;
 
+        function drawing(){
+            drawContext.clearRect(0, 0, 1920, 1080); 
             drawContext.drawImage(bgImg, 0, 0, 1920, 1080);
-
-            
-            
             drawContext.textAlign = "center";
-           
-            switch (this.$props.template) {
+            switch (bgId) {
                 case '1':
                     if(customImg != undefined){
                         drawContext.drawImage(customImg, 800, 260, 220, 110);
                     }
-                    var fontsize = 50;
                     drawContext.font = fontsize + 'px serif';
                     drawContext.fillStyle = '#993def';
-                    var lines = fragmentText(this.$props.slogan, 650 - parseInt(fontsize,0), drawContext);
+                   
                     lines.forEach(function(line, i) {
                         drawContext.fillText(line, 365 + 650 / 2, 390 + (i + 1) * parseInt(fontsize,0));
                     });
@@ -145,10 +276,9 @@ var addEffect = Vue.component('add-effect', {
                     if(customImg != undefined){
                         drawContext.drawImage(customImg, 500, 210, 350, 190);
                     }
-                    var fontsize = 50;
                     drawContext.font = fontsize + 'px serif';
                     drawContext.fillStyle = '#993def';
-                    var lines = fragmentText(this.$props.slogan, 850 - parseInt(fontsize,0), drawContext);
+                    
                     lines.forEach(function(line, i) {
                         drawContext.fillText(line, 500 + 850 / 2, 400 + (i + 1) * parseInt(fontsize,0));
                     });
@@ -157,16 +287,20 @@ var addEffect = Vue.component('add-effect', {
                     if(customImg != undefined){
                         drawContext.drawImage(customImg, 880, 320, 220, 110);
                     }
-                    var fontsize = 40;
                     drawContext.font = fontsize + 'px serif';
                     drawContext.fillStyle = '#993def';
-                    var lines = fragmentText(this.$props.slogan, 520 - parseInt(fontsize,0), drawContext);
+
                     lines.forEach(function(line, i) {
                         drawContext.fillText(line, 850 + 520 / 2, 430 + (i + 1) * parseInt(fontsize,0));
                     });
                     break;
                 }
+                topObjects.forEach(obj => {
+                    drawContext.drawImage(obj.obj, obj.x, obj.y, obj.width, obj.height);
+                });
+        }
+        this.$nextTick(function () {
+            drawing();
         })
-
     },
 })
