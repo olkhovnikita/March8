@@ -44,6 +44,13 @@ var myCanvas = Vue.component('my-canvas', {
     mounted() {
 
         this.$nextTick(function () {
+            function getTouchPos(canvasDom, touchEvent) {
+                var rect = canvasDom.getBoundingClientRect();
+                return {
+                  x: touchEvent.touches[0].clientX - rect.left,
+                  y: touchEvent.touches[0].clientY - rect.top
+                };
+              }
             // Код, который будет запущен только после
             // отображения всех представлений
             
@@ -62,6 +69,38 @@ var myCanvas = Vue.component('my-canvas', {
             canvas.onmouseup = stopDrawing;
             canvas.onmouseout = stopDrawing;
             canvas.onmousemove = draw;
+
+            canvas.addEventListener("touchstart", function (e) {
+                mousePos = getTouchPos(canvas, e);
+                var touch = e.touches[0];
+                var mouseEvent = new MouseEvent("mousedown", {
+                    clientX: touch.clientX,
+                    clientY: touch.clientY
+                });
+                canvas.dispatchEvent(mouseEvent);
+            }, false);
+
+            canvas.addEventListener("touchend", function (e) {
+                var mouseEvent = new MouseEvent("mouseup", {});
+                canvas.dispatchEvent(mouseEvent);
+              }, false);
+              canvas.addEventListener("touchmove", function (e) {
+                var touch = e.touches[0];
+                var mouseEvent = new MouseEvent("mousemove", {
+                  clientX: touch.clientX,
+                  clientY: touch.clientY
+                });
+                canvas.dispatchEvent(mouseEvent);
+              }, false);
+              
+
+
+            //canvas.addEventListener('touchend',  stopDrawing);
+            //canvas.addEventListener('touchmove',  draw);
+            //canvas.touchend = stopDrawing;
+           // canvas.onmouseout = stopDrawing;
+            //canvas.touchmove = draw;
+
 
             function startDrawing(e) {
                 // Начинаем рисовать
