@@ -1,3 +1,8 @@
 .load {
     text-align: center;
 }
+
+.ready-example {
+    display: flex;
+    align-items: center;
+}
