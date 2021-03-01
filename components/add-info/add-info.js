@@ -19,7 +19,7 @@ var addInfo = Vue.component('add-info', {
             <div><p class='or-text'>ИЛИ</p>
                 <div class='custom-options' >
                 <p class='form-text'>Свой вариант поздравления</p>
-                <textarea id='customSlogan' max-length='130' class='options' placeholder='Не более 130 символов'></textarea>
+                <textarea id='customSlogan' maxlength='130' class='options' placeholder='Не более 130 символов'></textarea>
                 </div>
             </div>
             <div class='info-btns'>

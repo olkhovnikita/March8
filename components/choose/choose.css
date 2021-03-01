@@ -18,8 +18,7 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    width: 609px;
-    height: 334px;
+    height: 325px;
     margin: 10px 15px;
     position: relative;
     box-shadow: 0 0 10px 8px rgb(159, 72, 240);
@@ -65,7 +64,6 @@
 
     .example {
         background-size: 100% 100%;
-        width: 235px;
         height: 152px;
         margin: 7px 11px;
     }

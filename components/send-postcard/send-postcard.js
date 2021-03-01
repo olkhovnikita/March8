@@ -1,7 +1,7 @@
 var sendPostcard = Vue.component('send-postcard', {
-    props:['template'],
+    props: ['template'],
     template:
-    `
+        `
     <form class='add-info' @submit='onSubmit' action=''>
         <p class='choose-text'>Отправь открытку</p>
         <div class='post-form form'>

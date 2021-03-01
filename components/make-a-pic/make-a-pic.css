@@ -16,9 +16,46 @@
     padding: 8px 43px;
 }
 
-@media(max-width: 768px){
+.preview {
+    position: relative;
+}
+
+.pen {
+    position: absolute;
+    bottom: 5%;
+    right: 114px;
+}
+
+@media(max-width: 768px) {
     .add-info-btns {
         flex-wrap: wrap;
         justify-content: center;
+    }
+    .square {
+        width: 94vw;
+        height: 53vh;
+        background-color: #fff;
+        margin: 0 auto;
+        display: block;
+    }
+    .pen {
+        position: absolute;
+        bottom: 2%;
+        right: 32px;
+    }
+}
+
+@media(max-width: 425px) {
+    .pen {
+        position: absolute;
+        bottom: 7%;
+        right: 61px;
+    }
+    .square {
+        width: 93vw;
+        height: 36vh;
+        background-color: #fff;
+        margin: 0 auto;
+        display: block;
     }
 }

@@ -12,13 +12,13 @@ new Vue({
         },
     el: '#content',
     data: {
-        page: 'my-canvas',
+        page: 'add-effect',
         templateId: null,
         img: null,
         croppedImg: '',
         sloganId: 0,
         name: '',
         customSlogan: '',
-        customImg: 'img/startdrawing.png',
+        customImg: undefined,
     }
 })
