@@ -9,92 +9,92 @@ var widthAspect;
 var availableObjects = [
     {
         "name": "star1",
-        "width": "100",
-        "height": "100",
-        "img": "stars.png"
+        "width": "1000",
+        "height": "1000",
+        "img": "star.png"
     },
     {
         "name": "star2",
-        "width": "100",
-        "height": "100",
-        "img": "stars2.png"
+        "width": "1000",
+        "height": "1000",
+        "img": "star2.png"
     },
     {
         "name": "star3",
-        "width": "100",
-        "height": "100",
-        "img": "stars3.png"
+        "width": "1000",
+        "height": "1000",
+        "img": "star3.png"
     },
     {
         "name": "greyFlower",
-        "width": "750",
-        "height": "510",
+        "width": "393",
+        "height": "360",
         "img": "1.png"
     },
     {
         "name": "tulip",
-        "width": "400",
-        "height": "690",
+        "width": "393",
+        "height": "360",
         "img": "2.png"
     },
     {
         "name": "shoe",
-        "width": "490",
-        "height": "480",
+        "width": "393",
+        "height": "360",
         "img": "3.png"
     },
     {
         "name": "butterfly",
-        "width": "700",
-        "height": "680",
+        "width": "393",
+        "height": "360",
         "img": "4.png"
     },
     {
         "name": "bear",
-        "width": "640",
-        "height": "640",
+        "width": "393",
+        "height": "360",
         "img": "5.png"
     },
     {
         "name": "gift",
-        "width": "540",
-        "height": "540",
+        "width": "393",
+        "height": "360",
         "img": "6.png"
     },
     {
         "name": "cat",
-        "width": "810",
-        "height": "520",
+        "width": "393",
+        "height": "360",
         "img": "7.png"
     },
     {
         "name": "rose",
-        "width": "700",
-        "height": "680",
+        "width": "393",
+        "height": "360",
         "img": "8.png"
     },
     {
         "name": "heart",
-        "width": "520",
-        "height": "480",
+        "width": "393",
+        "height": "360",
         "img": "9.png"
     },
     {
         "name": "lipstick",
-        "width": "760",
-        "height": "380",
+        "width": "393",
+        "height": "360",
         "img": "10.png"
     },
     {
         "name": "bouquet",
-        "width": "620",
-        "height": "700",
+        "width": "393",
+        "height": "360",
         "img": "11.png"
     },
     {
         "name": "like",
-        "width": "580",
-        "height": "620",
+        "width": "393",
+        "height": "360",
         "img": "12.png"
     }
 
@@ -174,7 +174,7 @@ var addEffect = Vue.component('add-effect', {
             availableObjects.forEach(v => {
                 if (v.name === data) {
                     var selectedImg = new Image();
-                    selectedImg.src = "img/" + v.img;
+                    selectedImg.src = "canvImg/" + v.img;
 
                     selectedTop = {
                         "obj": selectedImg,
@@ -232,7 +232,18 @@ var addEffect = Vue.component('add-effect', {
                 let y = (1080 / rect.height) * (e.clientY - rect.top);
                 selectedTop.x = x - (selectedTop.width / 2);
                 selectedTop.y = y - (selectedTop.height / 2);
-                var tmpSelObj = selectedTop;
+
+                var tmpImg = new Image();
+                tmpImg.src = selectedTop.obj.src;
+
+                var tmpSelObj = {
+                    "x" : x - (selectedTop.width / 2),
+                    "y" : y - (selectedTop.height / 2),
+                    "width" : selectedTop.width,
+                    "height": selectedTop.height,
+                    "obj" : tmpImg
+                };
+
                 topObjects.push(tmpSelObj)
                 drawing();
             }
@@ -247,20 +258,23 @@ var addEffect = Vue.component('add-effect', {
 
         switch (this.$props.template) {
             case '1':
-                bgImg.src = 'img/example_1.png';
+                bgImg.src = 'canvImg/bg1.png';
                 fontsize = 50;
                 lines = fragmentText(this.$props.slogan, 650 - parseInt(fontsize, 0), drawContext);
                 break;
             case '2':
-                bgImg.src = 'img/example_2.png'
+                bgImg.src = 'canvImg/bg2.png';
                 fontsize = 50;
                 lines = fragmentText(this.$props.slogan, 850 - parseInt(fontsize, 0), drawContext);
                 break;
             case '3':
-                bgImg.src = 'img/example_3.png';
+                bgImg.src = 'canvImg/bg3.png';
                 fontsize = 40;
                 lines = fragmentText(this.$props.slogan, 520 - parseInt(fontsize, 0), drawContext);
                 break;
+        }
+        bgImg.onload = function() {
+            drawing();
         }
 
         draw.onmousedown = clicked;
