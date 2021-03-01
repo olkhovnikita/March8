@@ -159,7 +159,7 @@ var addEffect = Vue.component('add-effect', {
             </div>            
         </div>
         <div class='info-btns'>
-            <button type='button' class='next-btn' @click="changePage('make-a-pic')">Назад</button>
+            <button type='button' class='next-btn' @click="getBack('make-a-pic')">Назад</button>
             <button type='button' class='next-btn' @click="changePage('postcard-ready')">Далее</button>
         </div>
     </div>
