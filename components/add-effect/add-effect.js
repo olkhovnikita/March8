@@ -27,74 +27,74 @@ var availableObjects = [
     },
     {
         "name": "greyFlower",
-        "width": "750",
-        "height": "510",
+        "width": "375",
+        "height": "255",
         "img": "1.png"
     },
     {
         "name": "tulip",
-        "width": "400",
-        "height": "690",
+        "width": "200",
+        "height": "345",
         "img": "2.png"
     },
     {
         "name": "shoe",
-        "width": "490",
-        "height": "480",
+        "width": "245",
+        "height": "240",
         "img": "3.png"
     },
     {
         "name": "butterfly",
-        "width": "700",
-        "height": "680",
+        "width": "350",
+        "height": "340",
         "img": "4.png"
     },
     {
         "name": "bear",
-        "width": "640",
-        "height": "640",
+        "width": "320",
+        "height": "320",
         "img": "5.png"
     },
     {
         "name": "gift",
-        "width": "540",
-        "height": "540",
+        "width": "270",
+        "height": "270",
         "img": "6.png"
     },
     {
         "name": "cat",
-        "width": "810",
-        "height": "520",
+        "width": "405",
+        "height": "260",
         "img": "7.png"
     },
     {
         "name": "rose",
-        "width": "700",
-        "height": "680",
+        "width": "350",
+        "height": "340",
         "img": "8.png"
     },
     {
         "name": "heart",
-        "width": "520",
-        "height": "480",
+        "width": "260",
+        "height": "240",
         "img": "9.png"
     },
     {
         "name": "lipstick",
-        "width": "760",
-        "height": "380",
+        "width": "380",
+        "height": "190",
         "img": "10.png"
     },
     {
         "name": "bouquet",
-        "width": "620",
-        "height": "700",
+        "width": "310",
+        "height": "350",
         "img": "11.png"
     },
     {
         "name": "like",
-        "width": "580",
-        "height": "620",
+        "width": "290",
+        "height": "310",
         "img": "12.png"
     }
 
