@@ -6,6 +6,7 @@ var topObjects = [];
 var selectedTop;
 var bgId;
 var widthAspect;
+var drawContext;
 var availableObjects = [
     {
         "name": "star1",
@@ -123,7 +124,7 @@ var addEffect = Vue.component('add-effect', {
                     <p class='effect-text'>стикеры</p>
                 </div>
                 <div class='undo choose-effect-btn'>
-                    <img src='img/undo.png'>
+                    <img src='img/undo.png'  @click="backStep()">
                     <p class='effect-text'>отменить<br>действие</p>
                 </div> 
                 </div>
@@ -164,9 +165,11 @@ var addEffect = Vue.component('add-effect', {
     </div>
     `,
     methods: {
-
-        getBack: function(data) {
-            this.$emit('page-number', data);
+        backStep : function (){
+            if(topObjects.length > 0){
+                topObjects.splice(-1,1);
+                drawing();
+            }
         },
         changePage: function (data) {
             var canvas = document.getElementById('selectedImg');
@@ -227,7 +230,7 @@ var addEffect = Vue.component('add-effect', {
         draw = document.getElementById('selectedImg');
         let rectTmp = draw.getBoundingClientRect(); 
         widthAspect = 1920 / rectTmp.width;
-        var drawContext = draw.getContext("2d")
+        drawContext = draw.getContext("2d")
 
         function clicked(e) {
             if (selectedTop != undefined) {
@@ -293,51 +296,54 @@ var addEffect = Vue.component('add-effect', {
         }, false);
         bgId = this.$props.template;
 
-        function drawing() {
-            drawContext.clearRect(0, 0, 1920, 1080);
-            drawContext.drawImage(bgImg, 0, 0, 1920, 1080);
-            drawContext.textAlign = "center";
-            switch (bgId) {
-                case '1':
-                    if (customImg != undefined) {
-                        drawContext.drawImage(customImg, 800, 260, 220, 110);
-                    }
-                    drawContext.font = fontsize + 'px serif';
-                    drawContext.fillStyle = '#993def';
-
-                    lines.forEach(function (line, i) {
-                        drawContext.fillText(line, 365 + 650 / 2, 390 + (i + 1) * parseInt(fontsize, 0));
-                    });
-                    break;
-                case '2':
-                    if (customImg != undefined) {
-                        drawContext.drawImage(customImg, 500, 210, 350, 190);
-                    }
-                    drawContext.font = fontsize + 'px serif';
-                    drawContext.fillStyle = '#993def';
-
-                    lines.forEach(function (line, i) {
-                        drawContext.fillText(line, 500 + 850 / 2, 400 + (i + 1) * parseInt(fontsize, 0));
-                    });
-                    break;
-                case '3':
-                    if (customImg != undefined) {
-                        drawContext.drawImage(customImg, 880, 320, 220, 110);
-                    }
-                    drawContext.font = fontsize + 'px serif';
-                    drawContext.fillStyle = '#993def';
-
-                    lines.forEach(function (line, i) {
-                        drawContext.fillText(line, 850 + 520 / 2, 430 + (i + 1) * parseInt(fontsize, 0));
-                    });
-                    break;
-            }
-            topObjects.forEach(obj => {
-                drawContext.drawImage(obj.obj, obj.x, obj.y, obj.width, obj.height);
-            });
-        }
+     
         this.$nextTick(function () {
             drawing();
         })
     },
 })
+
+
+function drawing() {
+    drawContext.clearRect(0, 0, 1920, 1080);
+    drawContext.drawImage(bgImg, 0, 0, 1920, 1080);
+    drawContext.textAlign = "center";
+    switch (bgId) {
+        case '1':
+            if (customImg != undefined) {
+                drawContext.drawImage(customImg, 800, 260, 220, 110);
+            }
+            drawContext.font = fontsize + 'px serif';
+            drawContext.fillStyle = '#993def';
+
+            lines.forEach(function (line, i) {
+                drawContext.fillText(line, 365 + 650 / 2, 390 + (i + 1) * parseInt(fontsize, 0));
+            });
+            break;
+        case '2':
+            if (customImg != undefined) {
+                drawContext.drawImage(customImg, 500, 210, 350, 190);
+            }
+            drawContext.font = fontsize + 'px serif';
+            drawContext.fillStyle = '#993def';
+
+            lines.forEach(function (line, i) {
+                drawContext.fillText(line, 500 + 850 / 2, 400 + (i + 1) * parseInt(fontsize, 0));
+            });
+            break;
+        case '3':
+            if (customImg != undefined) {
+                drawContext.drawImage(customImg, 880, 320, 220, 110);
+            }
+            drawContext.font = fontsize + 'px serif';
+            drawContext.fillStyle = '#993def';
+
+            lines.forEach(function (line, i) {
+                drawContext.fillText(line, 850 + 520 / 2, 430 + (i + 1) * parseInt(fontsize, 0));
+            });
+            break;
+    }
+    topObjects.forEach(obj => {
+        drawContext.drawImage(obj.obj, obj.x, obj.y, obj.width, obj.height);
+    });
+}
