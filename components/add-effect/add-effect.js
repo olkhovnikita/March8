@@ -165,6 +165,9 @@ var addEffect = Vue.component('add-effect', {
     </div>
     `,
     methods: {
+        getBack: function(data) {
+          this.$emit('page-number', data) ; 
+        },
         backStep : function (){
             if(topObjects.length > 0){
                 topObjects.splice(-1,1);
