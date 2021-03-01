@@ -106,7 +106,7 @@ var myCanvas = Vue.component('my-canvas', {
                 context.moveTo(e.pageX - canvas.offsetLeft, e.pageY - canvas.offsetTop);
 
                 context.strokeStyle = '#993def';
-                context.lineWidth = 10;
+                context.lineWidth = 1;
             }
             function draw(e) {
                 if (isDrawing == true) {
