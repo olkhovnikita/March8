@@ -15,9 +15,6 @@ var postcardReady = Vue.component('postcard-ready', {
     mounted() {
         var img = document.getElementById("img");
         img.src = finalImg;
-        //var download = document.getElementById("download");
-        //const base64Response = fetch(`data:image/jpeg;base64,${finalImg}`);
-        //const blob = base64Response.blob();
         download.href = finalImg;
     },
     methods: {
