@@ -5,6 +5,7 @@ var customImg;
 var topObjects = [];
 var selectedTop;
 var bgId;
+var widthAspect;
 var availableObjects = [
     {
         "name": "star1",
@@ -182,12 +183,12 @@ var addEffect = Vue.component('add-effect', {
             var words = text.split(' '),
                 lines = [],
                 line = "";
-            if (ctx.measureText(text).width < maxWidth) {
+            if (ctx.measureText(text).width * widthAspect < maxWidth) {
                 return [text];
             }
             while (words.length > 0) {
                 var split = false;
-                while (ctx.measureText(words[0]).width >= maxWidth) {
+                while (ctx.measureText(words[0]).width * widthAspect >= maxWidth) {
                     var tmp = words[0];
                     words[0] = tmp.slice(0, -1);
                     if (!split) {
@@ -197,7 +198,7 @@ var addEffect = Vue.component('add-effect', {
                         words[1] = tmp.slice(-1) + words[1];
                     }
                 }
-                if (ctx.measureText(line + words[0]).width < maxWidth) {
+                if (ctx.measureText(line + words[0]).width * widthAspect < maxWidth) {
                     line += words.shift() + " ";
                 } else {
                     lines.push(line);
@@ -210,6 +211,8 @@ var addEffect = Vue.component('add-effect', {
             return lines;
         }
         draw = document.getElementById('selectedImg');
+        let rectTmp = draw.getBoundingClientRect(); 
+        widthAspect = 1920 / rectTmp.width;
         var drawContext = draw.getContext("2d")
 
         function clicked(e)
