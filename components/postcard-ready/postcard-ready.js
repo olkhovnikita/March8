@@ -16,14 +16,14 @@ var postcardReady = Vue.component('postcard-ready', {
     </div>
     </div>
     `,
-    mounted(){
+    mounted() {
         var img = document.getElementById("img");
         img.src = finalImg;
         var download = document.getElementById("download");
         download.href = img.src;
     },
     methods: {
-       
+
         changePage: function (data) {
             this.$emit('page-number', data);
         },
