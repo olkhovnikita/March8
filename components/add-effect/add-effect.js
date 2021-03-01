@@ -264,23 +264,31 @@ var addEffect = Vue.component('add-effect', {
             customImg = new Image();
             customImg.src = this.$props.customImg;
         }
-        ;
+
+        var txtt;
+        if(nameToSend != ""){
+            txtt = nameToSend + "! " + this.$props.slogan;
+        }
+        else {
+            txtt = "Коллега! " + this.$props.slogan;
+        }
+         
 
         switch (this.$props.template) {
             case '1':
                 bgImg.src = 'canvImg/bg1.png';
                 fontsize = 50;
-                lines = fragmentText(this.$props.slogan, 650 - parseInt(fontsize, 0), drawContext);
+                lines = fragmentText(txtt, 650 - parseInt(fontsize, 0), drawContext);
                 break;
             case '2':
                 bgImg.src = 'canvImg/bg2.png';
                 fontsize = 50;
-                lines = fragmentText(this.$props.slogan, 850 - parseInt(fontsize, 0), drawContext);
+                lines = fragmentText(txtt, 850 - parseInt(fontsize, 0), drawContext);
                 break;
             case '3':
                 bgImg.src = 'canvImg/bg3.png';
                 fontsize = 40;
-                lines = fragmentText(this.$props.slogan, 520 - parseInt(fontsize, 0), drawContext);
+                lines = fragmentText(txtt, 520 - parseInt(fontsize, 0), drawContext);
                 break;
         }
         bgImg.onload = function () {
