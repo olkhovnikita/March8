@@ -6,7 +6,7 @@ var addInfo = Vue.component('add-info', {
         <p class='choose-text'>Добавь имя и поздравление</p>
         <div class='form'>
             <p class='form-text' >Имя</p>
-            <input type='text' placeholder='Введите имя адресата' id='name'>
+            <input id="name" type='text' placeholder='Введите имя адресата' id='name' @change="nameToSend">
         </div>
         <div class='grats-options'>
             <div class='ready-options'>
@@ -36,7 +36,10 @@ var addInfo = Vue.component('add-info', {
     </div>
     `,
     methods: {
-
+        nameToSend: function (data) {
+            var inpField = document.getElementById('name');
+            nameToSend = inpField.value;
+        },
         changePage: function (data) {
             this.$emit('page-number', data);
         },
