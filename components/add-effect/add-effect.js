@@ -126,26 +126,33 @@ var addEffect = Vue.component('add-effect', {
                     <p class='effect-text'>отменить<br>действие</p>
                 </div> 
                 </div>
-                <div class='pick-effect'>
+                <div class='pick-effect pick-effect_'>
                     <div id='effects' class='effects-options'>
                         <img src='img/stars.png' :class="template=='star1' ? 'effect effect-active' : 'effect'" @click="setSceneId('star1')">
                         <img src='img/stars2.png' :class="template=='star2' ? 'effect effect-active' : 'effect'" @click="setSceneId('star2')">
                         <img src='img/stars3.png' :class="template=='star3' ? 'effect effect-active' : 'effect'" @click="setSceneId('star3')">
                     </div>
                     <div class='stickers-options'>
+                        <div class='img-row'>
                             <img src='img/1.png' :class="template=='greyFlower' ? 'effect effect-active' : 'effect'" @click="setSceneId('greyFlower')">
                             <img src='img/2.png' :class="template=='tulip' ? 'effect effect-active' : 'effect'" @click="setSceneId('tulip')">
                             <img src='img/3.png' :class="template=='shoe' ? 'effect effect-active' : 'effect'" @click="setSceneId('shoe')">
                             <img src='img/4.png' :class="template=='butterfly' ? 'effect effect-active' : 'effect'" @click="setSceneId('butterfly')"> <br> 
+                        </div>
+                        <div class='img-row'>
                             <img src='img/5.png' :class="template=='bear' ? 'effect effect-active' : 'effect'" @click="setSceneId('bear')">
                             <img src='img/6.png' :class="template=='gift' ? 'effect effect-active' : 'effect'" @click="setSceneId('gift')">
                             <img src='img/7.png' :class="template=='cat' ? 'effect effect-active' : 'effect'" @click="setSceneId('cat')">
                             <img src='img/8.png' :class="template=='rose' ? 'effect effect-active' : 'effect'" @click="setSceneId('rose')"><br>
+                        </div>
+                        <div class='img-row'>
                             <img src='img/9.png' :class="template=='heart' ? 'effect effect-active' : 'effect'" @click="setSceneId('heart')">
                             <img src='img/10.png' :class="template=='lipstick' ? 'effect effect-active' : 'effect'" @click="setSceneId('lipstick')">
                             <img src='img/11.png' :class="template=='bouquet' ? 'effect effect-active' : 'effect'" @click="setSceneId('bouquet')">
                             <img src='img/12.png' :class="template=='like' ? 'effect effect-active' : 'effect'" @click="setSceneId('like')">
-                    </div>
+                        </div>
+                     </div>
+
                 </div>
             </div>            
         </div>
@@ -161,9 +168,9 @@ var addEffect = Vue.component('add-effect', {
         },
         setSceneId: function (data) {
             availableObjects.forEach(v => {
-                if(v.name === data){
+                if (v.name === data) {
                     var selectedImg = new Image();
-                    selectedImg.src = "img/"+v.img;
+                    selectedImg.src = "img/" + v.img;
 
                     selectedTop = {
                         "obj": selectedImg,
@@ -212,14 +219,13 @@ var addEffect = Vue.component('add-effect', {
         draw = document.getElementById('selectedImg');
         var drawContext = draw.getContext("2d")
 
-        function clicked(e)
-        {
-            if(selectedTop != undefined){
-                let rect = draw.getBoundingClientRect(); 
-                let x = (1920/rect.width) * (e.clientX - rect.left); 
-                let y = (1080/rect.height) * (e.clientY - rect.top); 
-                selectedTop.x = x-(selectedTop.width/2);
-                selectedTop.y = y-(selectedTop.height/2);
+        function clicked(e) {
+            if (selectedTop != undefined) {
+                let rect = draw.getBoundingClientRect();
+                let x = (1920 / rect.width) * (e.clientX - rect.left);
+                let y = (1080 / rect.height) * (e.clientY - rect.top);
+                selectedTop.x = x - (selectedTop.width / 2);
+                selectedTop.y = y - (selectedTop.height / 2);
                 var tmpSelObj = selectedTop;
                 topObjects.push(tmpSelObj)
                 drawing();
@@ -227,29 +233,29 @@ var addEffect = Vue.component('add-effect', {
         }
 
         bgImg = new Image();
-        if(this.$props.customImg != undefined){
+        if (this.$props.customImg != undefined) {
             customImg = new Image();
             customImg.src = this.$props.customImg;
         }
-;
-        
+        ;
+
         switch (this.$props.template) {
             case '1':
                 bgImg.src = 'img/example_1.png';
                 fontsize = 50;
-                lines = fragmentText(this.$props.slogan, 650 - parseInt(fontsize,0), drawContext);
+                lines = fragmentText(this.$props.slogan, 650 - parseInt(fontsize, 0), drawContext);
                 break;
             case '2':
                 bgImg.src = 'img/example_2.png'
                 fontsize = 50;
-                lines = fragmentText(this.$props.slogan, 850 - parseInt(fontsize,0), drawContext);
+                lines = fragmentText(this.$props.slogan, 850 - parseInt(fontsize, 0), drawContext);
                 break;
             case '3':
                 bgImg.src = 'img/example_3.png';
                 fontsize = 40;
-                lines = fragmentText(this.$props.slogan, 520 - parseInt(fontsize,0), drawContext);
+                lines = fragmentText(this.$props.slogan, 520 - parseInt(fontsize, 0), drawContext);
                 break;
-        }        
+        }
 
         draw.onmousedown = clicked;
         draw.addEventListener("touchstart", function (e) {
@@ -263,48 +269,48 @@ var addEffect = Vue.component('add-effect', {
         }, false);
         bgId = this.$props.template;
 
-        function drawing(){
-            drawContext.clearRect(0, 0, 1920, 1080); 
+        function drawing() {
+            drawContext.clearRect(0, 0, 1920, 1080);
             drawContext.drawImage(bgImg, 0, 0, 1920, 1080);
             drawContext.textAlign = "center";
             switch (bgId) {
                 case '1':
-                    if(customImg != undefined){
+                    if (customImg != undefined) {
                         drawContext.drawImage(customImg, 800, 260, 220, 110);
                     }
                     drawContext.font = fontsize + 'px serif';
                     drawContext.fillStyle = '#993def';
-                   
-                    lines.forEach(function(line, i) {
-                        drawContext.fillText(line, 365 + 650 / 2, 390 + (i + 1) * parseInt(fontsize,0));
+
+                    lines.forEach(function (line, i) {
+                        drawContext.fillText(line, 365 + 650 / 2, 390 + (i + 1) * parseInt(fontsize, 0));
                     });
                     break;
                 case '2':
-                    if(customImg != undefined){
+                    if (customImg != undefined) {
                         drawContext.drawImage(customImg, 500, 210, 350, 190);
                     }
                     drawContext.font = fontsize + 'px serif';
                     drawContext.fillStyle = '#993def';
-                    
-                    lines.forEach(function(line, i) {
-                        drawContext.fillText(line, 500 + 850 / 2, 400 + (i + 1) * parseInt(fontsize,0));
+
+                    lines.forEach(function (line, i) {
+                        drawContext.fillText(line, 500 + 850 / 2, 400 + (i + 1) * parseInt(fontsize, 0));
                     });
                     break;
                 case '3':
-                    if(customImg != undefined){
+                    if (customImg != undefined) {
                         drawContext.drawImage(customImg, 880, 320, 220, 110);
                     }
                     drawContext.font = fontsize + 'px serif';
                     drawContext.fillStyle = '#993def';
 
-                    lines.forEach(function(line, i) {
-                        drawContext.fillText(line, 850 + 520 / 2, 430 + (i + 1) * parseInt(fontsize,0));
+                    lines.forEach(function (line, i) {
+                        drawContext.fillText(line, 850 + 520 / 2, 430 + (i + 1) * parseInt(fontsize, 0));
                     });
                     break;
-                }
-                topObjects.forEach(obj => {
-                    drawContext.drawImage(obj.obj, obj.x, obj.y, obj.width, obj.height);
-                });
+            }
+            topObjects.forEach(obj => {
+                drawContext.drawImage(obj.obj, obj.x, obj.y, obj.width, obj.height);
+            });
         }
         this.$nextTick(function () {
             drawing();

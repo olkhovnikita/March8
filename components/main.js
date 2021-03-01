@@ -12,7 +12,7 @@ new Vue({
         },
     el: '#content',
     data: {
-        page: 'start',
+        page: 'add-effect',
         templateId: null,
         img: null,
         croppedImg: '',
