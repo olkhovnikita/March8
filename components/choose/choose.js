@@ -10,7 +10,7 @@ var choose = Vue.component('choose', {
             <div style='background-image: url(img/example_3.png)' :class="template=='3' ? 'example active' : 'example'" @click="setSceneId('3')"></div>
         </div>
         <div class='next'>
-            <button type='button' class='next-btn' @click="check('add-info')" >Продолжить</button>
+            <button type='button' class='next-btn-choose' @click="check('add-info')" >Продолжить</button>
         </div>
     </div>
 
