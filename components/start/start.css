@@ -5,8 +5,8 @@
     align-items: center;
     vertical-align: middle;
     flex-wrap: wrap;
-    margin-top: 60px;
-    min-height: 100%;
+    height: 40vh;
+    margin: 0 0 100px 0;
 }
 
 .start-btn {
@@ -16,7 +16,7 @@
     font-size: 72.1px;
     font-weight: 700;
     color: #ffffff;
-    padding: 15px 40px;
+    padding: 35px 100px;
 }
 
 .start-form-text {
@@ -24,13 +24,21 @@
     text-align: center;
 }
 
-@media (max-width: 768px) {
+@media(max-width: 1023px){
+    .start-btn {
+        font-size: 30px;
+        padding: 30px 50px;
+    }
+}
+
+@media (max-width: 767px) {
     .start-form-text {
         display: block;
     }
 
     .start-btn {
         font-size: 26px;
+        padding: 18px 31px;
     }
 
     .start-form-text {
