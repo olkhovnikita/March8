@@ -9,7 +9,7 @@ var final = Vue.component('final', {
 
     methods: {
         changePage: function (data) {
-            this.$emit('page-number', data);
+            window.open("https://8march-rt.com/","_self")
         },
     }
 })
