@@ -27,10 +27,11 @@ var sendPostcard = Vue.component('send-postcard', {
         onSubmit: function () {
             var mail = document.getElementById("email");
             var sender = document.getElementById("sender");
+            var sendingImage = finalImg;
             const formData = new FormData();
             formData.append("name", mail.value);
             formData.append("mail", sender.value);
-            formData.append("image", "");
+            formData.append("image", sendingImage);
 
             axios.post("https://8march-rt.com:9001/upload-image", formData).then(res => {
                 console.log(res);
