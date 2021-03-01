@@ -254,6 +254,15 @@ var addEffect = Vue.component('add-effect', {
         }        
 
         draw.onmousedown = clicked;
+        draw.addEventListener("touchstart", function (e) {
+            mousePos = getTouchPos(draw, e);
+            var touch = e.touches[0];
+            var mouseEvent = new MouseEvent("mousedown", {
+                clientX: touch.clientX,
+                clientY: touch.clientY
+            });
+            draw.dispatchEvent(mouseEvent);
+        }, false);
         bgId = this.$props.template;
 
         function drawing(){
