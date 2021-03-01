@@ -12,7 +12,7 @@ new Vue({
         },
     el: '#content',
     data: {
-        page: 'start',
+        page: 'add-info',
         templateId: null,
         img: null,
         croppedImg: '',
@@ -20,5 +20,6 @@ new Vue({
         name: '',
         customSlogan: '',
         customImg: undefined,
+        textArea: ''
     }
 })

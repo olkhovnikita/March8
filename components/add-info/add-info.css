@@ -10,11 +10,6 @@
     margin-top: 50px;
 }
 
-.option {
-    padding: 5px;
-    margin-right: 15px;
-}
-
 .form input {
     width: 100%;
     background-color: #993def;
@@ -42,7 +37,50 @@
     color: #ffffff;
 }
 
+.option {
+    overflow: hidden;
+    position: absolute;
+}
+
+.options-block {
+    position: relative;
+}
+
 .options {
+    width: 377px;
+    background-color: #993def;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-family: 'Rostelecom Basis Regular', sans-serif;
+    font-size: 24px;
+    font-weight: 300;
+    color: #ffffff;
+    border: 3px solid #85c9e5;
+    padding: 10px 15px;
+    position: relative;
+    border-bottom: hidden;
+}
+
+#textareaData {
+    position: absolute;
+    left: 0;
+    top: 82%;
+    right: 0;
+    width: 377px;
+    height: 194px;
+    background-color: #993def;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    font-family: 'Rostelecom Basis Regular', sans-serif;
+    font-size: 24px;
+    font-weight: 300;
+    color: #ffffff;
+    border: 3px solid #85c9e5;
+    padding: 10px 15px;
+    border-top: none;
+}
+
+.options_2 {
     width: 377px;
     height: 240px;
     background-color: #993def;
@@ -53,6 +91,15 @@
     color: #ffffff;
     border: 3px solid #85c9e5;
     padding: 10px 15px;
+    position: relative;
+}
+
+.options_2::placeholder {
+    font-family: 'Rostelecom Basis Regular', sans-serif;
+    font-size: 24px;
+    font-weight: 300;
+    color: #ffffff;
+    opacity: 0.54;
 }
 
 .options::placeholder {
@@ -92,7 +139,6 @@
 }
 
 @media (max-width: 768px) {
-
     .form {
         margin-top: 0;
         align-items: center;
@@ -103,7 +149,6 @@
     .options::placeholder {
         font-size: 16px;
     }
-
     .grats-options {
         flex-wrap: wrap;
     }
@@ -124,18 +169,26 @@
     }
     .options {
         width: 295px;
+        font-size: 16px;
+        padding: 10px 15px;
+    }
+    #textareaData {
+        width: 295px;
         height: 177px;
         font-size: 16px;
         padding: 10px 15px;
     }
-
+    .options_2 {
+        width: 295px;
+        height: 177px;
+        font-size: 16px;
+        padding: 10px 15px;
+        margin-top: 203px;
+    }
     .options::placeholder {
         font-size: 16px;
     }
-
     .next-btn {
         font-size: 18px;
     }
-
-
 }

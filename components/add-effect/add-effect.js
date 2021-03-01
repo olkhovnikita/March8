@@ -165,12 +165,12 @@ var addEffect = Vue.component('add-effect', {
     </div>
     `,
     methods: {
-        getBack: function(data) {
-          this.$emit('page-number', data) ; 
+        getBack: function (data) {
+            this.$emit('page-number', data);
         },
-        backStep : function (){
-            if(topObjects.length > 0){
-                topObjects.splice(-1,1);
+        backStep: function () {
+            if (topObjects.length > 0) {
+                topObjects.splice(-1, 1);
                 drawing();
             }
         },
@@ -231,7 +231,7 @@ var addEffect = Vue.component('add-effect', {
             return lines;
         }
         draw = document.getElementById('selectedImg');
-        let rectTmp = draw.getBoundingClientRect(); 
+        let rectTmp = draw.getBoundingClientRect();
         widthAspect = 1920 / rectTmp.width;
         drawContext = draw.getContext("2d")
 
@@ -247,11 +247,11 @@ var addEffect = Vue.component('add-effect', {
                 tmpImg.src = selectedTop.obj.src;
 
                 var tmpSelObj = {
-                    "x" : x - (selectedTop.width / 2),
-                    "y" : y - (selectedTop.height / 2),
-                    "width" : selectedTop.width,
+                    "x": x - (selectedTop.width / 2),
+                    "y": y - (selectedTop.height / 2),
+                    "width": selectedTop.width,
                     "height": selectedTop.height,
-                    "obj" : tmpImg
+                    "obj": tmpImg
                 };
 
                 topObjects.push(tmpSelObj)
@@ -283,7 +283,7 @@ var addEffect = Vue.component('add-effect', {
                 lines = fragmentText(this.$props.slogan, 520 - parseInt(fontsize, 0), drawContext);
                 break;
         }
-        bgImg.onload = function() {
+        bgImg.onload = function () {
             drawing();
         }
 
@@ -299,7 +299,7 @@ var addEffect = Vue.component('add-effect', {
         }, false);
         bgId = this.$props.template;
 
-     
+
         this.$nextTick(function () {
             drawing();
         })
