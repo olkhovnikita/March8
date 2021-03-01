@@ -4,7 +4,6 @@ var start = Vue.component('start', {
         `
     <div class='start'>
         <button type='button' class='start-btn' @click="changePage('choose')">Создать открытку</button>
-        <p class='form-text start-form-text'>Переверни экран горизонтально, так будет удобнее!</p>
     </div>
     `,
 
