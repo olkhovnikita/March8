@@ -60,11 +60,11 @@ var myCanvas = Vue.component('my-canvas', {
             var context;
             canvas = document.getElementById("myCanvas");
             context = canvas.getContext("2d");
-            canvas.width = canvas.offsetWidth;
-            canvas.height = canvas.offsetHeight;
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
             window.addEventListener('resize', function () {
-                canvas.width = canvas.offsetWidth;
-                canvas.height = canvas.offsetHeight;
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
             })
             // Подключаем требуемые для рисования события
             canvas.onmousedown = startDrawing;

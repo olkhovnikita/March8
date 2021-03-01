@@ -8,7 +8,8 @@ new Vue({
         'add-effect': addEffect,
         'postcard-ready': postcardReady,
         'send-postcard': sendPostcard,
-        'my-canvas': myCanvas
+        'my-canvas': myCanvas,
+        'my-footer': myFooter
         },
     el: '#content',
     data: {

@@ -70,12 +70,11 @@
                 @template-number="templateId = $event" :template="templateId"></send-postcard>
             <final v-if="page == 'final'" @page-number="page = $event" @template-number="templateId = $event"
                 :template="templateId"></final>
+                <my-footer :page='page'></my-footer>
         </div>
 
     </div>
-    <div class='footer' :page='page'>
-        <img src="img/text_logo.png" alt="Rostelecom">
-    </div>
+
     <script src="components/my-header/my-header.js"></script>
     <script src="components/start/start.js"></script>
     <script src="components/choose/choose.js"></script>

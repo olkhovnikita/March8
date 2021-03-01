@@ -112,7 +112,7 @@ body {
     background-size: cover;
     position: relative;
     padding-bottom: 150px;
-    min-height: 100vh;
+    min-height: calc(100vh - 150px);
 }
 
 .container {
