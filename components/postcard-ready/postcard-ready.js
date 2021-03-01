@@ -7,7 +7,7 @@ var postcardReady = Vue.component('postcard-ready', {
         <p class='form-text pic-form-text'>Ты можешь скачать открытку и отправить её коллеге</p>
         <div class='info-btns add-info-btns'>
             <button type='button' class='next-btn' @click="changePage('add-effect')">Назад</button>
-            <a href='finalImg' download class='next-btn load'>Скачать</a>
+            <a download="otkritka.jpg" href='' id="download" class='next-btn load'>Скачать</a>
             <button type='button' class='next-btn' @click="changePage('send-postcard')">Далее</button>
     </div>
     </div>
@@ -15,8 +15,10 @@ var postcardReady = Vue.component('postcard-ready', {
     mounted() {
         var img = document.getElementById("img");
         img.src = finalImg;
-        var download = document.getElementById("download");
-        download.href = img.src;
+        //var download = document.getElementById("download");
+        //const base64Response = fetch(`data:image/jpeg;base64,${finalImg}`);
+        //const blob = base64Response.blob();
+        download.href = finalImg;
     },
     methods: {
 
