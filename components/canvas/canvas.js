@@ -73,6 +73,7 @@ var myCanvas = Vue.component('my-canvas', {
             canvas.onmousemove = draw;
 
             canvas.addEventListener("touchstart", function (e) {
+                e.preventDefault();
                 mousePos = getTouchPos(canvas, e);
                 var touch = e.touches[0];
                 var mouseEvent = new MouseEvent("mousedown", {
@@ -83,7 +84,7 @@ var myCanvas = Vue.component('my-canvas', {
             }, false);
 
             canvas.addEventListener("touchend", function (e) {
-                
+                e.preventDefault();
                 var mouseEvent = new MouseEvent("mouseup", {});
                 canvas.dispatchEvent(mouseEvent);
             }, false);
