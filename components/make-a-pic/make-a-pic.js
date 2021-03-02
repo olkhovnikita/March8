@@ -1,12 +1,12 @@
 var makeAPic = Vue.component('make-a-pic', {
-    props:['template', 'customImg'],
+    props:['template', 'customImg', 'name'],
     template: 
     `
     <div class='add-info'>
         <p class='choose-text'>Создай авторский рисунок</p>
         <div class='preview'>
             <img :src='customImg' width='90%' class='square' @click="changePage('my-canvas')">
-            <img src='img/pen.png' alt='pen' class='pen'>
+            <img src='img/pen.png' alt='pen' class='pen' @click="changePage('my-canvas')">
         </div>
         <p class='form-text pic-form-text'>Нажми на белое поле и создай рисунок в появившемся окне, далее нажми на галочку</p>
         <div class='info-btns add-info-btns'>
@@ -21,5 +21,6 @@ var makeAPic = Vue.component('make-a-pic', {
         changePage: function (data) {
             this.$emit('page-number', data);
         },
+        
     }
 })

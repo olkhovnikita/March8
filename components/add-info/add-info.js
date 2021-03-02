@@ -12,7 +12,7 @@ var addInfo = Vue.component('add-info', {
         <p class='choose-text'>Добавь имя и поздравление</p>
         <div class='form'>
             <p class='form-text' >Имя</p>
-            <input id="name" type='text' placeholder='Введите имя адресата' @change="nameToSend">
+            <input id="name" type='text' placeholder='Введите имя адресата' @change="nameToSend" :value="this.$props.name">
         </div>
         <div class='grats-options'>
             <div class='ready-options'>
@@ -35,7 +35,7 @@ var addInfo = Vue.component('add-info', {
             <div><p class='or-text'>ИЛИ</p>
                 <div class='custom-options' >
                 <p class='form-text'>Свой вариант поздравления</p>
-                <textarea id='customSlogan' :disabled='optionValue != "0"' maxlength='130' class='options_2' placeholder='Не более 130 символов'></textarea>
+                <textarea :value='this.$props.customSlogan' id='customSlogan' :disabled='optionValue != "0"' maxlength='130' class='options_2' placeholder='Не более 130 символов'></textarea>
                 </div>
             </div>
             <div class='info-btns'>
@@ -66,7 +66,7 @@ var addInfo = Vue.component('add-info', {
             this.$emit('page-number', data);
         },
         setInfo: function (data) {
-            var name = document.getElementById('name');
+            var name = document.getElementById('name').value;
             var textArea = document.getElementById('customSlogan');
             var sloganNode = document.querySelector('[data-checked = true]');
             var customSlogan = '';
@@ -75,12 +75,9 @@ var addInfo = Vue.component('add-info', {
             } else {
                 customSlogan = sloganNode.innerText;
             }
-            this.$emit('name', name.value);
+            this.$emit('name', name);
             this.$emit('slogan', customSlogan);
             this.$emit('page-number', data);
-
-
-
         },
 
     },

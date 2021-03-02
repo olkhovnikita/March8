@@ -13,7 +13,7 @@ new Vue({
         },
     el: '#content',
     data: {
-        page: 'postcard-ready',
+        page: 'start',
         templateId: null,
         img: null,
         croppedImg: '',
@@ -21,6 +21,7 @@ new Vue({
         name: '',
         customSlogan: '',
         customImg: 'img/white_square.png',
-        textArea: ''
+        textArea: '',
+        optionValue: ''
     }
 })
