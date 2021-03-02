@@ -80,7 +80,8 @@
     padding: 10px 15px;
 }
 
-.options_2::placeholder {
+.options_2::placeholder,
+#textareaData::placeholder {
     font-family: 'Rostelecom Basis Regular', sans-serif;
     font-size: 24px;
     font-weight: 300;
@@ -102,11 +103,14 @@
 .select-btn {
     position: absolute;
     top: 15px;
-    right: 5px;
+    right: 21px;
     background-color: #993def;
     color: #ffffff;
-    font-size: 20px;
-    width: 25%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 20px;
 }
 
 #sloganSelect {

@@ -18,7 +18,7 @@ var addInfo = Vue.component('add-info', {
             <div class='ready-options'>
                 <p class='form-text'>Выбери поздравление</p>
                 <div class='options-block' >
-                <button class='select-btn' @click='showDropdown = !showDropdown'>&#8744;</button>
+                <button class='select-btn' @click='showDropdown = !showDropdown'><img src='img/arrow.png'></button>
                 <div id='sloganSelect' :style='showDropdown ? "display:block" : "display:none"'>
                     <p class='option' @click='selectPozd(0)' :data-checked='optionValue == "0" ? "true" : "false"' data-value='0'>Нет</p>
                     <p class='option' @click='selectPozd(1)' :data-checked='optionValue == "1" ? "true" : "false"' data-value='1'>Поздравляю с праздником весны! Пусть цифровой мир дарит бесконечные возможности и успех.</p>
@@ -29,7 +29,7 @@ var addInfo = Vue.component('add-info', {
                     <p class='option' @click='selectPozd(5)' :data-checked='optionValue == "5" ? "true" : "false"' data-value='5'>Поздравляю с праздников весны! Пусть мир дарит красоту и вдохновение, а близкие люди – любовь и счастье.</p>
                     <p class='option' @click='selectPozd(6)' :data-checked='optionValue == "6" ? "true" : "false"' data-value='6'>Поздравляю с праздником весны! Пусть будет много солнечных дней и приятных сюрпризов.</p>
                 </div>
-                <textarea id='textareaData' :value='getPreparedSlogan(optionValue)' readonly></textarea>
+                <textarea id='textareaData' :value='getPreparedSlogan(optionValue)' placeholder="Выбери вариант поздравления" readonly></textarea>
                 </div>
             </div
             <div><p class='or-text'>ИЛИ</p>

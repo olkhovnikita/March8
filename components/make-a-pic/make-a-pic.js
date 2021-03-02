@@ -5,7 +5,7 @@ var makeAPic = Vue.component('make-a-pic', {
     <div class='add-info'>
         <p class='choose-text'>Создай авторский рисунок</p>
         <div class='preview'>
-            <img :src='customImg' class='square' @click="changePage('my-canvas')">
+            <img :src='customImg' width='90%' class='square' @click="changePage('my-canvas')">
             <img src='img/pen.png' alt='pen' class='pen'>
         </div>
         <p class='form-text pic-form-text'>Нажми на белое поле и создай рисунок в появившемся окне, далее нажми на галочку</p>

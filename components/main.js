@@ -13,14 +13,14 @@ new Vue({
         },
     el: '#content',
     data: {
-        page: 'postcard-ready',
+        page: 'start',
         templateId: null,
         img: null,
         croppedImg: '',
         sloganId: 0,
         name: '',
         customSlogan: '',
-        customImg: undefined,
+        customImg: 'img/white_square.png',
         textArea: ''
     }
 })
