@@ -11,7 +11,7 @@ var makeAPic = Vue.component('make-a-pic', {
         <p class='form-text pic-form-text'>Нажми на белое поле и создай рисунок в появившемся окне, далее нажми на галочку</p>
         <div class='info-btns add-info-btns'>
             <button type='button' class='next-btn' @click="changePage('add-info')">Назад</button>
-            <button type='button' class='next-btn' @click="skip('add-effect')">Пропустить</button>
+            <button type='button' class='next-btn' @click="changePage('add-effect')">Пропустить</button>
             <button type='button' class='next-btn' @click="changePage('add-effect')">Далее</button>
         </div>
     </div>
@@ -21,12 +21,6 @@ var makeAPic = Vue.component('make-a-pic', {
         changePage: function (data) {
             this.$emit('page-number', data);
         },
-
-        skip: function(data){
-            this.$emit('page-number', data);
-            this.$emit('customImg', undefined);
-            console.log(customImg);
-        }
         
     }
 })

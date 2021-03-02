@@ -132,10 +132,12 @@
 }
 
 .info-btns {
-    margin-top: 47px;
+    margin: 47px auto 0;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    max-width: 863px;
 }
 
 @media (max-width: 768px) {
