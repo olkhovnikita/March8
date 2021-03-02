@@ -102,14 +102,15 @@
 .select-btn {
     position: absolute;
     top: 15px;
-    right: 15px;
+    right: 5px;
     background-color: #993def;
     color: #ffffff;
-    font-size: 16px;
+    font-size: 20px;
     width: 25%;
 }
 
 #sloganSelect {
+    z-index: 99;
     position: absolute;
     top: 22%;
     left: 0;
