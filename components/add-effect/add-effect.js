@@ -189,7 +189,6 @@ var addEffect = Vue.component('add-effect', {
         changePage: function (data) {
             var canvas = document.getElementById('selectedImg');
             finalImg = canvas.toDataURL("image/jpeg");
-            console.log(finalImg);
             this.$emit('page-number', data);
         },
         setSceneId: function (data) {
