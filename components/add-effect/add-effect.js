@@ -103,6 +103,12 @@ var availableObjects = [
 
 var addEffect = Vue.component('add-effect', {
     props: ['template', 'slogan', 'customImg'],
+    data: function() {
+        return {
+            showEffects: true,
+            showStickers: true
+        }
+    },
     template:
         `
     <div class='add-info add-effect-wrap'>
@@ -111,16 +117,17 @@ var addEffect = Vue.component('add-effect', {
                 <p class='choose-text'>Добавь немного праздника</p>
                 <canvas id='selectedImg' class='example' width='1920' height='1080'></canvas>
                 <p class='form-text pic-form-text'>Выбери стикер или эффект в меню справа</p>
+                <p class='form-text another-pic-form-text'>Выбери стикер или эффект в меню снизу</p>
             </div>
             <div class='choose-effect'>
             <div class='pick-effect'>
-                <div class='effects choose-effect-btn'>
-                    <img src='img/stars.png'>
+                <div class='effects choose-effect-btn' >
+                    <img src='img/stars.png' @click='showEffects = !showEffects'>
                     <p class='effect-text'>эффекты</p>
                 </div>
 
-                <div class='stickers choose-effect-btn'>
-                    <img src='img/effects.png'>
+                <div class='stickers choose-effect-btn' >
+                    <img src='img/effects.png' @click='showStickers = !showStickers'>
                     <p class='effect-text'>стикеры</p>
                 </div>
                 <div class='undo choose-effect-btn'>
@@ -129,12 +136,12 @@ var addEffect = Vue.component('add-effect', {
                 </div> 
                 </div>
                 <div class='pick-effect pick-effect_'>
-                    <div id='effects' class='effects-options'>
+                    <div id='effects' class='effects-options' :style='showEffects ? "display:none" : "display:flex"'>
                         <img src='img/stars.png' :class="template=='star1' ? 'effect effect-active' : 'effect'" @click="setSceneId('star1')">
                         <img src='img/stars2.png' :class="template=='star2' ? 'effect effect-active' : 'effect'" @click="setSceneId('star2')">
                         <img src='img/stars3.png' :class="template=='star3' ? 'effect effect-active' : 'effect'" @click="setSceneId('star3')">
                     </div>
-                    <div class='stickers-options'>
+                    <div class='stickers-options' :style='showStickers ? "display:none" : "display:block"'>
                         <div class='img-row'>
                             <img src='img/1.png' :class="template=='greyFlower' ? 'effect effect-active' : 'effect'" @click="setSceneId('greyFlower')">
                             <img src='img/2.png' :class="template=='tulip' ? 'effect effect-active' : 'effect'" @click="setSceneId('tulip')">

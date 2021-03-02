@@ -118,6 +118,7 @@ body {
 .container {
     margin: 0 auto;
     max-width: 1920px;
+    padding: 0 10px;
 }
 
 @media(max-width: 768px) {

@@ -64,7 +64,7 @@
     padding: 18px 114px;
 }
 
-@media(max-width: 768px){
+@media(max-width: 702px){
     .header:not(:first-child) {
         display: none;
     }

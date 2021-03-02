@@ -2,10 +2,11 @@
     padding-top: 19px;
     font-size: 20px;
     text-align: center;
+    display: block;
 }
 
 .next-btn {
-    padding: 8px 40px;
+    padding: 8px 35px;
 }
 
 .preview {
@@ -17,7 +18,7 @@
 
 .square {
     background: #fff;
-    margin-left: 10px;
+    margin-left: 15px;
 }
 
 .pen {
@@ -36,6 +37,9 @@
         bottom: 25px;
         right: 96px;
         width: 40px;
+    }
+    .pic-form-text {
+        font-size: 14px;
     }
 }
 
