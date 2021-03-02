@@ -24,18 +24,30 @@ var myCanvas = Vue.component('my-canvas', {
             context.clearRect(0, 0, canvas.width, canvas.height);
         },
         saveCanvas: function () {
-            function cropPlusExport(img,cropX,cropY,cropWidth,cropHeight, canvWidth){
+            function cropHDFromCenterPlusExport(img, canvWidth, canvHeight) {
                 // create a temporary canvas sized to the cropped size
-                var canvas1=document.createElement('canvas');
-                var ctx1=canvas1.getContext('2d');
-                canvas1.width=cropWidth;
-                canvas1.height=cropHeight;
+                var canvas1 = document.createElement('canvas');
+                var ctx1 = canvas1.getContext('2d');
+                
                 // use the extended from of drawImage to draw the
                 // cropped area to the temp canvas
-                ctx1.drawImage(img,cropX,cropY,cropWidth,cropHeight,cropWidth/2 - canvWidth/2,0,cropWidth,cropHeight);
+                //ctx1.drawImage(img, cropX, cropY, cropWidth, cropHeight, cropWidth / 2 - canvWidth / 2, 0, cropWidth, cropHeight);
                 // return the .toDataURL of the temp canvas
-                return(canvas1.toDataURL());
-              }
+                if (canvWidth > canvHeight * 1.77777777778) {
+                    var cropWidth = canvHeight*1.77777777778;
+                    canvas1.width = cropWidth;
+                    canvas1.height = canvHeight;
+                    ctx1.drawImage(img, (canvWidth-cropWidth)/2, 0, cropWidth, canvHeight, 0, 0, cropWidth, canvHeight);
+                }
+                else {
+                    var cropHeight = canvWidth * 0.5625;
+                    canvas1.width = canvWidth;
+                    canvas1.height = cropHeight;
+                    ctx1.drawImage(img, 0, (canvHeight-cropHeight)/2, canvWidth, cropHeight, 0, 0, canvWidth, cropHeight);//(canvWidth-cropWidth)/2, 0, cropWidth, canvHeight, 0, 0, cropWidth, canvHeight);
+                }
+
+                return (canvas1.toDataURL());
+            }
 
             var canvas;
             canvas = document.getElementById("myCanvas");
@@ -45,19 +57,15 @@ var myCanvas = Vue.component('my-canvas', {
                 var img = new Image();
                 img.src = canvas.toDataURL();
                 self = this;
-                img.onload = function() {
-                    //var croppedURL=cropPlusExport(img, 0, canvas.height/2 - (9 * canvas.width/ 16)/2, canvas.width,  9 * canvas.width/ 16); croppX
-                    var croppedURL=cropPlusExport(img, canvas.width/2 - (canvas.height * 16/9) /2 , 0, (canvas.height * 16)/9, canvas.height, canvas.width);
-                    //var cropImg=new Image();
-                    //cropImg.src=croppedURL;
-    
-                    imageCopy.src = croppedURL;//canvas.toDataURL();
+                img.onload = function () {
+                    var croppedURL = cropHDFromCenterPlusExport(img, canvas.width, canvas.height);
+                    
+                    imageCopy.src = croppedURL; //canvas.toDataURL();
                     customImg = imageCopy.src;
-                    console.log(customImg);
                     self.$emit('page-number', 'make-a-pic');
-                    self.$emit('custom-img', customImg);
+                    self.$emit('custom-img', croppedURL);
                 }
-                
+
 
             }
         },
@@ -68,7 +76,7 @@ var myCanvas = Vue.component('my-canvas', {
 
 
     mounted() {
-        
+
         this.$nextTick(function () {
             function getTouchPos(canvasDom, touchEvent) {
                 var rect = canvasDom.getBoundingClientRect();
@@ -95,6 +103,17 @@ var myCanvas = Vue.component('my-canvas', {
             canvas.onmouseup = stopDrawing;
             canvas.onmouseout = stopDrawing;
             canvas.onmousemove = draw;
+
+            context.fillStyle = '#993def';
+            if (canvas.width > canvas.height * 1.77777777778) {
+                context.fillRect(0, 0, (canvas.width - canvas.height * 1.77777777778) / 2, canvas.height);
+                context.fillRect(canvas.width - (canvas.width - canvas.height * 1.77777777778) / 2, 0, (canvas.width - canvas.height * 1.77777777778) / 2, canvas.height);
+            } else {
+                context.fillRect(0, 0, canvas.width, (canvas.height - canvas.width * 0.5625) / 2);
+                context.fillRect(0, canvas.height - (canvas.height - canvas.width * 0.5625) / 2, canvas.width, (canvas.height - canvas.width * 0.5625) / 2);
+            }
+
+
 
             canvas.addEventListener("touchstart", function (e) {
                 e.preventDefault();
