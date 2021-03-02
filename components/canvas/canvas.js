@@ -24,16 +24,39 @@ var myCanvas = Vue.component('my-canvas', {
             context.clearRect(0, 0, canvas.width, canvas.height);
         },
         saveCanvas: function () {
+            function cropPlusExport(img,cropX,cropY,cropWidth,cropHeight){
+                // create a temporary canvas sized to the cropped size
+                var canvas1=document.createElement('canvas');
+                var ctx1=canvas1.getContext('2d');
+                canvas1.width=cropWidth;
+                canvas1.height=cropHeight;
+                // use the extended from of drawImage to draw the
+                // cropped area to the temp canvas
+                ctx1.drawImage(img,cropX,cropY,cropWidth,cropHeight,0,0,cropWidth,cropHeight);
+                // return the .toDataURL of the temp canvas
+                return(canvas1.toDataURL());
+              }
+
             var canvas;
             canvas = document.getElementById("myCanvas");
             context = canvas.getContext("2d");
             var imageCopy = document.getElementById("savedImageCopy");
             if (canvas) {
-                imageCopy.src = canvas.toDataURL();
-                customImg = imageCopy.src;
-                console.log(customImg);
-                this.$emit('page-number', 'make-a-pic');
-                this.$emit('custom-img', customImg);
+                var img = new Image();
+                img.src = canvas.toDataURL();
+                self = this;
+                img.onload = function() {
+                    var croppedURL=cropPlusExport(img, 0, canvas.height/2 - (9 * canvas.width/ 16)/2, canvas.width,  9 * canvas.width/ 16);
+                    //var cropImg=new Image();
+                    //cropImg.src=croppedURL;
+    
+                    imageCopy.src = croppedURL;//canvas.toDataURL();
+                    customImg = imageCopy.src;
+                    console.log(customImg);
+                    self.$emit('page-number', 'make-a-pic');
+                    self.$emit('custom-img', customImg);
+                }
+                
 
             }
         },
