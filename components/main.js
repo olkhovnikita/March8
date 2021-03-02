@@ -13,7 +13,7 @@ new Vue({
         },
     el: '#content',
     data: {
-        page: 'start',
+        page: 'postcard-ready',
         templateId: null,
         img: null,
         croppedImg: '',
