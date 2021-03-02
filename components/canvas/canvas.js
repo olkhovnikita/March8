@@ -22,6 +22,14 @@ var myCanvas = Vue.component('my-canvas', {
             canvas = document.getElementById("myCanvas");
             context = canvas.getContext("2d");
             context.clearRect(0, 0, canvas.width, canvas.height);
+            context.fillStyle = '#993def';
+            if (canvas.width > canvas.height * 1.77777777778) {
+                context.fillRect(0, 0, (canvas.width - canvas.height * 1.77777777778) / 2, canvas.height);
+                context.fillRect(canvas.width - (canvas.width - canvas.height * 1.77777777778) / 2, 0, (canvas.width - canvas.height * 1.77777777778) / 2, canvas.height);
+            } else {
+                context.fillRect(0, 0, canvas.width, (canvas.height - canvas.width * 0.5625) / 2);
+                context.fillRect(0, canvas.height - (canvas.height - canvas.width * 0.5625) / 2, canvas.width, (canvas.height - canvas.width * 0.5625) / 2);
+            }
         },
         saveCanvas: function () {
             function cropHDFromCenterPlusExport(img, canvWidth, canvHeight) {
@@ -95,8 +103,9 @@ var myCanvas = Vue.component('my-canvas', {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             window.addEventListener('resize', function () {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
+                //canvas.width = window.innerWidth;
+                //canvas.height = window.innerHeight;
+
             })
             // Подключаем требуемые для рисования события
             canvas.onmousedown = startDrawing;
