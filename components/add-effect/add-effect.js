@@ -242,7 +242,11 @@ var addEffect = Vue.component('add-effect', {
         }
         draw = document.getElementById('selectedImg');
         let rectTmp = draw.getBoundingClientRect();
-        widthAspect = 1920 / rectTmp.width;
+        if(rectTmp.width < 400){
+            widthAspect = 1920 / rectTmp.width/2;
+        } else {
+            widthAspect = 1920 / rectTmp.width;
+        }
         drawContext = draw.getContext("2d")
 
         function clicked(e) {
