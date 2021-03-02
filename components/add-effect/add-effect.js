@@ -283,7 +283,7 @@ var addEffect = Vue.component('add-effect', {
             case '2':
                 bgImg.src = 'canvImg/bg2.png';
                 fontsize = 50;
-                lines = fragmentText(txtt, 850 - parseInt(fontsize, 0), drawContext);
+                lines = fragmentText(txtt, 750 - parseInt(fontsize, 0), drawContext);
                 break;
             case '3':
                 bgImg.src = 'canvImg/bg3.png';
@@ -339,7 +339,7 @@ function drawing() {
             drawContext.fillStyle = '#993def';
 
             lines.forEach(function (line, i) {
-                drawContext.fillText(line, 500 + 850 / 2, 400 + (i + 1) * parseInt(fontsize, 0));
+                drawContext.fillText(line, 550 + 750 / 2, 400 + (i + 1) * parseInt(fontsize, 0));
             });
             break;
         case '3':
@@ -350,7 +350,7 @@ function drawing() {
             drawContext.fillStyle = '#993def';
 
             lines.forEach(function (line, i) {
-                drawContext.fillText(line, 850 + 570 / 2, 430 + (i + 1) * parseInt(fontsize, 0));
+                drawContext.fillText(line, 900 + 570 / 2, 430 + (i + 1) * parseInt(fontsize, 0));
             });
             break;
     }
