@@ -125,3 +125,15 @@ body {
         display: none;
     }
 }
+
+@media(max-width: 475px) {
+    body {
+        background: url(../img/background-mobile.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+        padding-bottom: 150px;
+        min-height: 100vh;
+    }
+}

@@ -181,18 +181,17 @@
         width: 295px;
         height: 177px;
         font-size: 16px;
-        padding: 10px 15px;
+        padding: 25px 15px;
     }
     .options_2 {
         width: 295px;
         height: 177px;
         font-size: 16px;
-        padding: 10px 15px;
+        padding: 25px 15px;
     }
-    .options::placeholder {
-        font-size: 16px;
-    }
-    .options_2::placeholder {
+
+    .options_2::placeholder,
+    #textareaData::placeholder {
         font-size: 16px;
     }
     .next-btn {
