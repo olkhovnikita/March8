@@ -103,7 +103,7 @@ var availableObjects = [
 
 var addEffect = Vue.component('add-effect', {
     props: ['template', 'slogan', 'customImg'],
-    data: function() {
+    data: function () {
         return {
             showEffects: true,
             showStickers: true,
@@ -166,13 +166,15 @@ var addEffect = Vue.component('add-effect', {
                 </div>
             </div>            
         </div>
-        <div class='add-info-wrap'>
+        <div class='add-info-cont'>
         <div class='info-btns'>
             <button type='button' class='next-btn' @click="getBack('make-a-pic')">Назад</button>
             <button type='button' class='next-btn' @click="changePage('postcard-ready')">Далее</button>
         </div>
-        </div>
     </div>
+
+        </div>
+
     `,
     methods: {
         getBack: function (data) {
@@ -242,8 +244,8 @@ var addEffect = Vue.component('add-effect', {
         }
         draw = document.getElementById('selectedImg');
         let rectTmp = draw.getBoundingClientRect();
-        if(rectTmp.width < 400){
-            widthAspect = 1920 / rectTmp.width/2;
+        if (rectTmp.width < 400) {
+            widthAspect = 1920 / rectTmp.width / 2;
         } else {
             widthAspect = 1920 / rectTmp.width;
         }
@@ -280,13 +282,13 @@ var addEffect = Vue.component('add-effect', {
         }
 
         var txtt;
-        if(nameToSend != ""){
+        if (nameToSend != "") {
             txtt = nameToSend + "! " + this.$props.slogan;
         }
         else {
             txtt = "Коллега! " + this.$props.slogan;
         }
-         
+
 
         switch (this.$props.template) {
             case '1':

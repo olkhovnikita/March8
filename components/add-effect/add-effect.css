@@ -5,6 +5,9 @@
     justify-content: center;
     flex-direction: column;
 }
+.add-info-cont {
+    max-width: 863px;
+}
 
 .effect-text {
     text-align: center;
