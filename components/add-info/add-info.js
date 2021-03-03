@@ -35,7 +35,7 @@ var addInfo = Vue.component('add-info', {
             <div><p class='or-text'>ИЛИ</p>
                 <div class='custom-options' >
                 <p class='form-text'>Свой вариант поздравления</p>
-                <textarea :value='this.$props.customSlogan' id='customSlogan' :disabled='optionValue != "0"' maxlength='130' class='options_2' placeholder='Не более 130 символов'></textarea>
+                <textarea :value='this.$props.customSlogan' id='customSlogan' :disabled='optionValue != "0"' maxlength='130' class='options_2' placeholder='Не более 130 символов' @change="sloganChanged"></textarea>
                 </div>
             </div>
             <div class='info-btns'>
@@ -46,7 +46,20 @@ var addInfo = Vue.component('add-info', {
     </div>
     `,
     methods: {
-
+        sloganChanged: function() {
+            var name = document.getElementById('name').value;
+            var textArea = document.getElementById('customSlogan');
+            var sloganNode = document.querySelector('[data-checked = true]');
+            
+            var customSloganTmp = '';
+            if (sloganNode.getAttribute('data-value') == '0') {
+                customSloganTmp = textArea.value;
+                
+            } else {
+                customSloganTmp = sloganNode.innerText;
+            }
+            this.customSlogan = customSloganTmp;
+        },
         getPreparedSlogan: function(id){
             if(id == '0'){
                 return ''
@@ -71,12 +84,15 @@ var addInfo = Vue.component('add-info', {
             var name = document.getElementById('name').value;
             var textArea = document.getElementById('customSlogan');
             var sloganNode = document.querySelector('[data-checked = true]');
+            
             var customSlogan = '';
             if (sloganNode.getAttribute('data-value') == '0') {
                 customSlogan = textArea.value;
+                
             } else {
                 customSlogan = sloganNode.innerText;
             }
+            //this.customSlogan = customSloganTmp;
             this.$emit('name', name);
             this.$emit('slogan', customSlogan);
             this.$emit('page-number', data);
