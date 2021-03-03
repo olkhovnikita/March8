@@ -310,7 +310,7 @@ var addEffect = Vue.component('add-effect', {
                 case '1':
                     bgImg.src = 'canvImg/bg1.png';
                     fontsize = 40;
-                    lines = fragmentText(txtt, 650 - parseInt(fontsize, 0), drawContext);
+                    lines = fragmentText(txtt, 750 - parseInt(fontsize, 0), drawContext);
                     break;
                 case '2':
                     bgImg.src = 'canvImg/bg2.png';
@@ -360,15 +360,17 @@ function drawing() {
     drawContext.textAlign = "center";
     switch (bgId) {
         case '1':
+            drawContext.save();
             if (customImgTmp != undefined) {
                 drawContext.drawImage(customImgTmp, 800, 260, 220, 110);
             }
             drawContext.font = fontsize + 'px serif';
             drawContext.fillStyle = '#993def';
-
+            drawContext.rotate(-11 * Math.PI / 180);
             lines.forEach(function (line, i) {
-                drawContext.fillText(line, 365 + 650 / 2, 390 + (i + 1) * parseInt(fontsize, 0));
+                drawContext.fillText(line, 210 + 750 / 2, 550 + (i + 1) * parseInt(fontsize, 0));
             });
+            drawContext.restore();
             break;
         case '2':
             if (customImgTmp != undefined) {
