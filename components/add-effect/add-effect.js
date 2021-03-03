@@ -1,10 +1,7 @@
 var bgImg;
-var lines;
 var fontsize;
-var customImg;
 var topObjects = [];
 var selectedTop;
-var bgId;
 var widthAspect;
 var drawContext;
 var availableObjects = [
@@ -292,42 +289,48 @@ var addEffect = Vue.component('add-effect', {
             }
         }
 
-        bgImg = new Image();
-        if (this.$props.customImg != undefined) {
-            customImg = new Image();
-            customImg.src = this.$props.customImg;
+        if(customImgTmp == undefined){
+            bgImg = new Image();
+            if (this.$props.customImg != undefined) {
+                customImgTmp = new Image();
+                customImgTmp.src = this.$props.customImg;
+            }
         }
+        
 
-        var txtt;
-        if (nameToSend != "") {
-            txtt = nameToSend + "! " + this.$props.slogan;
-        }
-        else {
-            txtt = "Коллега! " + this.$props.slogan;
-        }
+        if(txtt == undefined){
+            if (nameToSend != "") {
+                txtt = nameToSend + "! " + this.$props.slogan;
+            }
+            else {
+                txtt = "Коллега! " + this.$props.slogan;
+            }
 
+            switch (this.$props.template) {
+                case '1':
+                    bgImg.src = 'canvImg/bg1.png';
+                    fontsize = 40;
+                    lines = fragmentText(txtt, 650 - parseInt(fontsize, 0), drawContext);
+                    break;
+                case '2':
+                    bgImg.src = 'canvImg/bg2.png';
+                    fontsize = 50;
+                    lines = fragmentText(txtt, 750 - parseInt(fontsize, 0), drawContext);
+                    break;
+                case '3':
+                    bgImg.src = 'canvImg/bg3.png';
+                    fontsize = 30;
+                    lines = fragmentText(txtt, 570 - parseInt(fontsize, 0), drawContext);
+                    break;
+            }
 
-        switch (this.$props.template) {
-            case '1':
-                bgImg.src = 'canvImg/bg1.png';
-                fontsize = 40;
-                lines = fragmentText(txtt, 650 - parseInt(fontsize, 0), drawContext);
-                break;
-            case '2':
-                bgImg.src = 'canvImg/bg2.png';
-                fontsize = 50;
-                lines = fragmentText(txtt, 750 - parseInt(fontsize, 0), drawContext);
-                break;
-            case '3':
-                bgImg.src = 'canvImg/bg3.png';
-                fontsize = 30;
-                lines = fragmentText(txtt, 570 - parseInt(fontsize, 0), drawContext);
-                break;
-        }
-        bgImg.onload = function () {
-            drawing();
-        }
+            bgImg.onload = function () {
+                drawing();
+            }
+        }        
 
+        drawing();
+    
         draw.onmousedown = clicked;
         draw.addEventListener("touchstart", function (e) {
             mousePos = getTouchPos(draw, e);
@@ -338,7 +341,10 @@ var addEffect = Vue.component('add-effect', {
             });
             draw.dispatchEvent(mouseEvent);
         }, false);
-        bgId = this.$props.template;
+        if(bgId == undefined){
+            bgId = this.$props.template;
+        }
+
 
 
         this.$nextTick(function () {
@@ -354,8 +360,8 @@ function drawing() {
     drawContext.textAlign = "center";
     switch (bgId) {
         case '1':
-            if (customImg != undefined) {
-                drawContext.drawImage(customImg, 800, 260, 220, 110);
+            if (customImgTmp != undefined) {
+                drawContext.drawImage(customImgTmp, 800, 260, 220, 110);
             }
             drawContext.font = fontsize + 'px serif';
             drawContext.fillStyle = '#993def';
@@ -365,8 +371,8 @@ function drawing() {
             });
             break;
         case '2':
-            if (customImg != undefined) {
-                drawContext.drawImage(customImg, 530, 210, 350, 190);
+            if (customImgTmp != undefined) {
+                drawContext.drawImage(customImgTmp, 530, 210, 350, 190);
             }
             drawContext.font = fontsize + 'px serif';
             drawContext.fillStyle = '#993def';
@@ -376,8 +382,8 @@ function drawing() {
             });
             break;
         case '3':
-            if (customImg != undefined) {
-                drawContext.drawImage(customImg, 880, 320, 220, 110);
+            if (customImgTmp != undefined) {
+                drawContext.drawImage(customImgTmp, 880, 320, 220, 110);
             }
             drawContext.font = fontsize + 'px serif';
             drawContext.fillStyle = '#993def';
