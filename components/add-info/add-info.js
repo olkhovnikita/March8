@@ -92,6 +92,7 @@ var addInfo = Vue.component('add-info', {
             } else {
                 customSlogan = sloganNode.innerText;
             }
+            slg = customSlogan;
             //this.customSlogan = customSloganTmp;
             this.$emit('name', name);
             this.$emit('slogan', customSlogan);
