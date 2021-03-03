@@ -40,14 +40,14 @@ var availableObjects = [
     },
     {
         "name": "shoe",
-        "width": "393",
-        "height": "360",
+        "width": "196",
+        "height": "180",
         "img": "3.png"
     },
     {
         "name": "butterfly",
-        "width": "393",
-        "height": "360",
+        "width": "196",
+        "height": "180",
         "img": "4.png"
     },
     {
@@ -58,8 +58,8 @@ var availableObjects = [
     },
     {
         "name": "gift",
-        "width": "393",
-        "height": "360",
+        "width": "196",
+        "height": "180",
         "img": "6.png"
     },
     {
@@ -82,8 +82,8 @@ var availableObjects = [
     },
     {
         "name": "lipstick",
-        "width": "393",
-        "height": "360",
+        "width": "196",
+        "height": "180",
         "img": "10.png"
     },
     {
