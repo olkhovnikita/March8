@@ -69,9 +69,11 @@ var myCanvas = Vue.component('my-canvas', {
                     var croppedURL = cropHDFromCenterPlusExport(img, canvas.width, canvas.height);
                     
                     imageCopy.src = croppedURL; //canvas.toDataURL();
-                    customImg = imageCopy.src;
+                    cust = croppedURL;
                     self.$emit('page-number', 'make-a-pic');
                     self.$emit('custom-img', croppedURL);
+
+                    canvas.parentNode.removeChild(canvas);
                 }
 
 

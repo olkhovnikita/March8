@@ -291,12 +291,31 @@ var addEffect = Vue.component('add-effect', {
 
         if(customImgTmp == undefined){
             bgImg = new Image();
-            if (this.$props.customImg != undefined) {
+            if (cust != undefined) {
                 customImgTmp = new Image();
-                customImgTmp.src = this.$props.customImg;
+                
             }
         }
+        customImgTmp.src = cust;
         
+        switch (this.$props.template) {
+            case '1':
+                bgImg.src = 'canvImg/bg1.png';
+                //fontsize = 40;
+               // lines = fragmentText(txtt, 750 - parseInt(fontsize, 0), drawContext);
+                break;
+            case '2':
+                bgImg.src = 'canvImg/bg2.png';
+               // fontsize = 45;
+               // lines = fragmentText(txtt, 750 - parseInt(fontsize, 0), drawContext);
+                break;
+            case '3':
+                bgImg.src = 'canvImg/bg3.png';
+               // fontsize = 32;
+               // lines = fragmentText(txtt, 750 - parseInt(fontsize, 0), drawContext);
+                break;
+        }
+
 
         if(txtt == undefined){
             if (nameToSend != "") {
@@ -308,17 +327,17 @@ var addEffect = Vue.component('add-effect', {
 
             switch (this.$props.template) {
                 case '1':
-                    bgImg.src = 'canvImg/bg1.png';
+                   // bgImg.src = 'canvImg/bg1.png';
                     fontsize = 40;
                     lines = fragmentText(txtt, 750 - parseInt(fontsize, 0), drawContext);
                     break;
                 case '2':
-                    bgImg.src = 'canvImg/bg2.png';
+                  //  bgImg.src = 'canvImg/bg2.png';
                     fontsize = 45;
                     lines = fragmentText(txtt, 750 - parseInt(fontsize, 0), drawContext);
                     break;
                 case '3':
-                    bgImg.src = 'canvImg/bg3.png';
+                  //  bgImg.src = 'canvImg/bg3.png';
                     fontsize = 32;
                     lines = fragmentText(txtt, 750 - parseInt(fontsize, 0), drawContext);
                     break;
