@@ -7,6 +7,7 @@ var postcardReady = Vue.component('postcard-ready', {
         <img id="img" class='square' width='90%'>
         </div>
         <p class='form-text pic-form-text'>Ты можешь скачать открытку и отправить её коллеге</p>
+        <p class='form-text another-pic-form-text'>Ты можешь скачать открытку и отправить её коллеге</p>
         <div class='info-btns add-info-btns'>
             <button type='button' class='next-btn' @click="changePage('add-effect')">Назад</button>
             <a download="otkritka.jpg" href='' id="download" class='next-btn load'>Скачать</a>
