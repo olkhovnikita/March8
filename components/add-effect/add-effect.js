@@ -123,12 +123,12 @@ var addEffect = Vue.component('add-effect', {
             <div class='choose-effect'>
             <div class='pick-effect'>
                 <div class='effects choose-effect-btn' >
-                    <img src='img/starsButton.png' @click='showEffects = !showEffects'>
+                    <img id="starsButt" src='img/starsButton.png' @click='showEffect'>
                     <p class='effect-text'>эффекты</p>
                 </div>
 
                 <div class='stickers choose-effect-btn' >
-                    <img src='img/effects.png' @click='showStickers = !showStickers'>
+                    <img id="sticker" src='img/effects.png' @click='showSticker'>
                     <p class='effect-text'>стикеры</p>
                 </div>
                 <div class='undo choose-effect-btn'>
@@ -175,6 +175,26 @@ var addEffect = Vue.component('add-effect', {
 
     `,
     methods: {
+        showEffect: function() {
+            var img = document.getElementById('starsButt');
+            this.showEffects = !this.showEffects;
+            if(this.showEffects){
+                img.src = "img/starsButton.png";
+            }
+            else {
+                img.src = "img/selectstars.png";
+            }
+        },
+        showSticker: function() {
+            var img = document.getElementById('sticker');
+            this.showStickers = !this.showStickers;
+            if(this.showStickers){
+                img.src = "img/effects.png";
+            }
+            else {
+                img.src = "img/selecteffects.png";
+            }
+        },
         getBack: function (data) {
             this.$emit('page-number', data);
         },
