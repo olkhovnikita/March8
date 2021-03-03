@@ -123,7 +123,7 @@ var addEffect = Vue.component('add-effect', {
             <div class='choose-effect'>
             <div class='pick-effect'>
                 <div class='effects choose-effect-btn' >
-                    <img src='img/stars.png' @click='showEffects = !showEffects'>
+                    <img src='img/starsButton.png' @click='showEffects = !showEffects'>
                     <p class='effect-text'>эффекты</p>
                 </div>
 
