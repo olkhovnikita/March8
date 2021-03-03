@@ -60,7 +60,7 @@
                 :template="templateId"></add-info>
             <make-a-pic v-if="page == 'make-a-pic'" :custom-slogan='customSlogan' :name = 'name' @custom-img="customImg = $event" :custom-img='customImg'
                 @page-number="page = $event" @template-number="templateId = $event" :template="templateId"></make-a-pic>
-            <my-canvas v-if="page == 'my-canvas'" @page-number="page = $event" @custom-img='customImg = $event'
+            <my-canvas v-if="page == 'my-canvas'" :custom-img='customImg' @page-number="page = $event" @custom-img='customImg = $event'
                 @template-number="templateId = $event" :template="templateId"></my-canvas>
             <add-effect v-if="page == 'add-effect'" :img='img' :custom-img='customImg' @page-number="page = $event"
                 @template-number="templateId = $event" :slogan='customSlogan' :template="templateId"></add-effect>

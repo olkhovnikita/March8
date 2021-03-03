@@ -36,25 +36,21 @@ var myCanvas = Vue.component('my-canvas', {
                 // create a temporary canvas sized to the cropped size
                 var canvas1 = document.createElement('canvas');
                 var ctx1 = canvas1.getContext('2d');
-                
-                // use the extended from of drawImage to draw the
-                // cropped area to the temp canvas
-                //ctx1.drawImage(img, cropX, cropY, cropWidth, cropHeight, cropWidth / 2 - canvWidth / 2, 0, cropWidth, cropHeight);
-                // return the .toDataURL of the temp canvas
                 if (canvWidth > canvHeight * 1.77777777778) {
-                    var cropWidth = canvHeight*1.77777777778;
+                    var cropWidth = canvHeight * 1.77777777778;
                     canvas1.width = cropWidth;
                     canvas1.height = canvHeight;
-                    ctx1.drawImage(img, (canvWidth-cropWidth)/2, 0, cropWidth, canvHeight, 0, 0, cropWidth, canvHeight);
+                    ctx1.drawImage(img, (canvWidth - cropWidth) / 2, 0, cropWidth, canvHeight, 0, 0, cropWidth, canvHeight);
                 }
                 else {
                     var cropHeight = canvWidth * 0.5625;
                     canvas1.width = canvWidth;
                     canvas1.height = cropHeight;
-                    ctx1.drawImage(img, 0, (canvHeight-cropHeight)/2, canvWidth, cropHeight, 0, 0, canvWidth, cropHeight);//(canvWidth-cropWidth)/2, 0, cropWidth, canvHeight, 0, 0, cropWidth, canvHeight);
+                    ctx1.drawImage(img, 0, (canvHeight - cropHeight) / 2, canvWidth, cropHeight, 0, 0, canvWidth, cropHeight);//(canvWidth-cropWidth)/2, 0, cropWidth, canvHeight, 0, 0, cropWidth, canvHeight);
                 }
-
+                console.log(img);
                 return (canvas1.toDataURL());
+
             }
 
             var canvas;
@@ -67,7 +63,7 @@ var myCanvas = Vue.component('my-canvas', {
                 self = this;
                 img.onload = function () {
                     var croppedURL = cropHDFromCenterPlusExport(img, canvas.width, canvas.height);
-                    
+
                     imageCopy.src = croppedURL; //canvas.toDataURL();
                     cust = croppedURL;
                     self.$emit('page-number', 'make-a-pic');
@@ -88,6 +84,8 @@ var myCanvas = Vue.component('my-canvas', {
     mounted() {
 
         this.$nextTick(function () {
+            canvas = document.getElementById("myCanvas");
+            context = canvas.getContext("2d");
             function getTouchPos(canvasDom, touchEvent) {
                 var rect = canvasDom.getBoundingClientRect();
                 return {
@@ -97,11 +95,7 @@ var myCanvas = Vue.component('my-canvas', {
             }
             // Код, который будет запущен только после
             // отображения всех представлений
-
-
             var context;
-            canvas = document.getElementById("myCanvas");
-            context = canvas.getContext("2d");
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             window.addEventListener('resize', function () {
@@ -123,7 +117,11 @@ var myCanvas = Vue.component('my-canvas', {
                 context.fillRect(0, 0, canvas.width, (canvas.height - canvas.width * 0.5625) / 2);
                 context.fillRect(0, canvas.height - (canvas.height - canvas.width * 0.5625) / 2, canvas.width, (canvas.height - canvas.width * 0.5625) / 2);
             }
-
+            if (this.$props.customImg != 'img/white_square.png') {
+                var img = new Image();
+                img.src = this.$props.customImg;
+                context.drawImage(img, 0, 0);
+            }
 
 
             canvas.addEventListener("touchstart", function (e) {
@@ -183,6 +181,6 @@ var myCanvas = Vue.component('my-canvas', {
             }
 
         })
-    }
+    },
 
 })
