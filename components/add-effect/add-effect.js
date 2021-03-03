@@ -319,7 +319,7 @@ var addEffect = Vue.component('add-effect', {
                     break;
                 case '3':
                     bgImg.src = 'canvImg/bg3.png';
-                    fontsize = 35;
+                    fontsize = 32;
                     lines = fragmentText(txtt, 750 - parseInt(fontsize, 0), drawContext);
                     break;
             }
