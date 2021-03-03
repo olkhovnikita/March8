@@ -310,7 +310,7 @@ var addEffect = Vue.component('add-effect', {
         switch (this.$props.template) {
             case '1':
                 bgImg.src = 'canvImg/bg1.png';
-                fontsize = 50;
+                fontsize = 40;
                 lines = fragmentText(txtt, 650 - parseInt(fontsize, 0), drawContext);
                 break;
             case '2':
@@ -320,7 +320,7 @@ var addEffect = Vue.component('add-effect', {
                 break;
             case '3':
                 bgImg.src = 'canvImg/bg3.png';
-                fontsize = 40;
+                fontsize = 30;
                 lines = fragmentText(txtt, 570 - parseInt(fontsize, 0), drawContext);
                 break;
         }
@@ -366,7 +366,7 @@ function drawing() {
             break;
         case '2':
             if (customImg != undefined) {
-                drawContext.drawImage(customImg, 500, 210, 350, 190);
+                drawContext.drawImage(customImg, 530, 210, 350, 190);
             }
             drawContext.font = fontsize + 'px serif';
             drawContext.fillStyle = '#993def';
