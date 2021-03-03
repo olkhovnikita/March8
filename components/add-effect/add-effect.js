@@ -131,7 +131,7 @@ var addEffect = Vue.component('add-effect', {
                     <p class='effect-text'>отменить<br>действие</p>
                 </div> 
                 </div>
-                <div class='pick-effect pick-effect_'>
+                <div class='pick-effect_'>
                     <div id='effects' class='effects-options' :style='showEffects ? "display:none" : "display:flex"'>
                         <img src='img/stars.png' :class="template=='star1' ? 'effect effect-active' : 'effect'" @click="setSceneId('star1')">
                         <img src='img/stars2.png' :class="template=='star2' ? 'effect effect-active' : 'effect'" @click="setSceneId('star2')">
