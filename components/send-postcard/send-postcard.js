@@ -37,6 +37,7 @@ var sendPostcard = Vue.component('send-postcard', {
             formData.append("image", sendingImage);
 
             if(sending == false){
+                sending = true;
                 axios.post("https://8march-rt.com:9001/upload-image", formData).then(res => {
                     console.log(res);
                     console.log(res.data);
