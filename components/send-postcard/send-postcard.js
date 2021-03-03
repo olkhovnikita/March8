@@ -1,3 +1,5 @@
+var sending = false;
+
 var sendPostcard = Vue.component('send-postcard', {
     props: ['template'],
     template:
@@ -34,11 +36,14 @@ var sendPostcard = Vue.component('send-postcard', {
             formData.append("mail", mail.value);
             formData.append("image", sendingImage);
 
-            axios.post("https://8march-rt.com:9001/upload-image", formData).then(res => {
-                console.log(res);
-                console.log(res.data);
-                this.changePage('final')
-            });
+            if(sending == false){
+                axios.post("https://8march-rt.com:9001/upload-image", formData).then(res => {
+                    console.log(res);
+                    console.log(res.data);
+                    this.changePage('final')
+                });
+            }
+            
         }
     }
 })
