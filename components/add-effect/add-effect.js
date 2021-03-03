@@ -4,8 +4,7 @@ var topObjects = [];
 var selectedTop;
 var widthAspect;
 var drawContext;
-var availableObjects = [
-    {
+var availableObjects = [{
         "name": "star1",
         "width": "1000",
         "height": "1000",
@@ -107,8 +106,7 @@ var addEffect = Vue.component('add-effect', {
             hideRight: true
         }
     },
-    template:
-        `
+    template: `
     <div class='add-info add-effect-wrap'>
         <div class='add-effect'>
             <div>
@@ -172,23 +170,21 @@ var addEffect = Vue.component('add-effect', {
 
     `,
     methods: {
-        showEffect: function() {
+        showEffect: function () {
             var img = document.getElementById('starsButt');
             this.showEffects = !this.showEffects;
-            if(this.showEffects){
+            if (this.showEffects) {
                 img.src = "img/starsButton.png";
-            }
-            else {
+            } else {
                 img.src = "img/selectstars.png";
             }
         },
-        showSticker: function() {
+        showSticker: function () {
             var img = document.getElementById('sticker');
             this.showStickers = !this.showStickers;
-            if(this.showStickers){
+            if (this.showStickers) {
                 img.src = "img/effects.png";
-            }
-            else {
+            } else {
                 img.src = "img/selecteffects.png";
             }
         },
@@ -225,6 +221,7 @@ var addEffect = Vue.component('add-effect', {
     },
     mounted() {
         var draw;
+
         function fragmentText(text, maxWidth, ctx) {
             var words = text.split(' '),
                 lines = [],
@@ -289,71 +286,69 @@ var addEffect = Vue.component('add-effect', {
             }
         }
 
-        if(customImgTmp == undefined){
+        if (customImgTmp == undefined) {
             bgImg = new Image();
             if (cust != undefined) {
                 customImgTmp = new Image();
-                
+
             }
         }
 
-        if(customImgTmp != undefined){
+        if (customImgTmp != undefined) {
             customImgTmp.src = cust;
         }
 
-        
+
         switch (this.$props.template) {
             case '1':
                 bgImg.src = 'canvImg/bg1.png';
                 //fontsize = 40;
-               // lines = fragmentText(txtt, 750 - parseInt(fontsize, 0), drawContext);
+                // lines = fragmentText(txtt, 750 - parseInt(fontsize, 0), drawContext);
                 break;
             case '2':
                 bgImg.src = 'canvImg/bg2.png';
-               // fontsize = 45;
-               // lines = fragmentText(txtt, 750 - parseInt(fontsize, 0), drawContext);
+                // fontsize = 45;
+                // lines = fragmentText(txtt, 750 - parseInt(fontsize, 0), drawContext);
                 break;
             case '3':
                 bgImg.src = 'canvImg/bg3.png';
-               // fontsize = 32;
-               // lines = fragmentText(txtt, 750 - parseInt(fontsize, 0), drawContext);
+                // fontsize = 32;
+                // lines = fragmentText(txtt, 750 - parseInt(fontsize, 0), drawContext);
                 break;
         }
 
 
-        if(txtt == undefined){
-            if (nameToSend != "") {
-                txtt = nameToSend + "! " + this.$props.slogan;
-            }
-            else {
-                txtt = "Коллега! " + this.$props.slogan;
-            }
+        if (nameToSend != "") {
+            txtt = nameToSend + "! " + slg;
+        } else {
+            txtt = "Коллега! " + slg;
+        }
 
-            switch (this.$props.template) {
-                case '1':
-                   // bgImg.src = 'canvImg/bg1.png';
-                    fontsize = 40;
-                    lines = fragmentText(txtt, 750 - parseInt(fontsize, 0), drawContext);
-                    break;
-                case '2':
-                  //  bgImg.src = 'canvImg/bg2.png';
-                    fontsize = 45;
-                    lines = fragmentText(txtt, 750 - parseInt(fontsize, 0), drawContext);
-                    break;
-                case '3':
-                  //  bgImg.src = 'canvImg/bg3.png';
-                    fontsize = 32;
-                    lines = fragmentText(txtt, 750 - parseInt(fontsize, 0), drawContext);
-                    break;
-            }
+        switch (this.$props.template) {
+            case '1':
+                // bgImg.src = 'canvImg/bg1.png';
+                fontsize = 40;
+                lines = fragmentText(txtt, 750 - parseInt(fontsize, 0), drawContext);
+                break;
+            case '2':
+                //  bgImg.src = 'canvImg/bg2.png';
+                fontsize = 45;
+                lines = fragmentText(txtt, 750 - parseInt(fontsize, 0), drawContext);
+                break;
+            case '3':
+                //  bgImg.src = 'canvImg/bg3.png';
+                fontsize = 32;
+                lines = fragmentText(txtt, 750 - parseInt(fontsize, 0), drawContext);
+                break;
+        }
 
-            bgImg.onload = function () {
-                drawing();
-            }
-        }        
+        bgImg.onload = function () {
+            drawing();
+        }
+
 
         drawing();
-    
+
         draw.onmousedown = clicked;
         draw.addEventListener("touchstart", function (e) {
             mousePos = getTouchPos(draw, e);
@@ -364,7 +359,7 @@ var addEffect = Vue.component('add-effect', {
             });
             draw.dispatchEvent(mouseEvent);
         }, false);
-        if(bgId == undefined){
+        if (bgId == undefined) {
             bgId = this.$props.template;
         }
 
