@@ -59,8 +59,10 @@ var addInfo = Vue.component('add-info', {
         },
 
         nameToSend: function (data) {
+
             var inpField = document.getElementById('name');
             nameToSend = inpField.value;
+            this.name = inpField.value;
         },
         changePage: function (data) {
             this.$emit('page-number', data);
