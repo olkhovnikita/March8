@@ -319,8 +319,8 @@ var addEffect = Vue.component('add-effect', {
                     break;
                 case '3':
                     bgImg.src = 'canvImg/bg3.png';
-                    fontsize = 30;
-                    lines = fragmentText(txtt, 570 - parseInt(fontsize, 0), drawContext);
+                    fontsize = 35;
+                    lines = fragmentText(txtt, 750 - parseInt(fontsize, 0), drawContext);
                     break;
             }
 
@@ -382,15 +382,17 @@ function drawing() {
             });
             break;
         case '3':
+            drawContext.save();
             if (customImgTmp != undefined) {
                 drawContext.drawImage(customImgTmp, 880, 320, 220, 110);
             }
             drawContext.font = fontsize + 'px serif';
             drawContext.fillStyle = '#993def';
-
+            drawContext.rotate(13 * Math.PI / 180);
             lines.forEach(function (line, i) {
-                drawContext.fillText(line, 900 + 570 / 2, 430 + (i + 1) * parseInt(fontsize, 0));
+                drawContext.fillText(line, 860 + 750 / 2, 180 + (i + 1) * parseInt(fontsize, 0));
             });
+            drawContext.restore();
             break;
     }
     topObjects.forEach(obj => {
