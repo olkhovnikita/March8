@@ -296,7 +296,11 @@ var addEffect = Vue.component('add-effect', {
                 
             }
         }
-        customImgTmp.src = cust;
+
+        if(customImgTmp != undefined){
+            customImgTmp.src = cust;
+        }
+
         
         switch (this.$props.template) {
             case '1':
