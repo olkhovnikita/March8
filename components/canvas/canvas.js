@@ -48,7 +48,7 @@ var myCanvas = Vue.component('my-canvas', {
                     canvas1.height = cropHeight;
                     ctx1.drawImage(img, 0, (canvHeight - cropHeight) / 2, canvWidth, cropHeight, 0, 0, canvWidth, cropHeight);//(canvWidth-cropWidth)/2, 0, cropWidth, canvHeight, 0, 0, cropWidth, canvHeight);
                 }
-                console.log(img);
+                //console.log(img);
                 return (canvas1.toDataURL());
 
             }
@@ -120,7 +120,16 @@ var myCanvas = Vue.component('my-canvas', {
             if (this.$props.customImg != 'img/white_square.png') {
                 var img = new Image();
                 img.src = this.$props.customImg;
-                context.drawImage(img, 0, 0);
+
+                if (canvas.width > canvas.height * 1.77777777778) {
+                    context.drawImage(img, (canvas.width - canvas.height * 1.77777777778) / 2, 0);
+                }
+                else {
+                    context.drawImage(img, 0, (canvas.height - canvas.width * 0.5625) / 2);
+                }
+
+
+                
             }
 
 

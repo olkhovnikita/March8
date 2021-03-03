@@ -285,19 +285,16 @@ var addEffect = Vue.component('add-effect', {
                 drawing();
             }
         }
+        
+        if(bgImg == undefined) bgImg = new Image();
 
-        if (customImgTmp == undefined) {
-            bgImg = new Image();
-            if (cust != undefined) {
+        if(cust != undefined){
+            if (customImgTmp == undefined) {
                 customImgTmp = new Image();
-
             }
-        }
-
-        if (customImgTmp != undefined) {
             customImgTmp.src = cust;
         }
-
+        
 
         switch (this.$props.template) {
             case '1':
