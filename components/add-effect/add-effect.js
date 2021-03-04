@@ -109,7 +109,7 @@ var addEffect = Vue.component('add-effect', {
     template: `
     <div class='add-info add-effect-wrap'>
         <div class='add-effect'>
-            <div class='examples'>
+            <div class='examples ex'>
                 <p class='choose-text'>Добавь немного праздника</p>
                 <canvas id='selectedImg' width='1920' height='1080'></canvas>
                 <p class='form-text pic-form-text'>Выбери стикер или эффект в меню справа</p>

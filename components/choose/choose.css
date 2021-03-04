@@ -7,11 +7,19 @@
 }
 
 .examples {
-    margin: 0 auto;
+    align-items: center;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     max-width: 1920px;
+    flex-direction: column;
+}
+.ex {
+    margin: 0;
+}
+
+.exam {
+    flex-direction: unset;
 }
 
 .example {

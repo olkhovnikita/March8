@@ -105,7 +105,7 @@
     }
 }
 
-@media (max-width: 872px){
+@media (max-width: 708px){
     .pick-effect {
         flex-direction: column;
     }
