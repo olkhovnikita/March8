@@ -14,12 +14,16 @@
     max-width: 1920px;
 }
 
+.ex {
+    height: 165px;
+}
+
 .example {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    width: 495px;
-    height: 278px;
+    max-width: 495px;
+    width: 94%;
     margin: 10px 15px;
     position: relative;
     box-shadow: 0 0 10px 8px rgb(159, 72, 240);
@@ -64,20 +68,19 @@
     padding: 18px 114px;
 }
 
-@media(max-width: 702px){
+@media(max-width: 702px) {
     .header:not(:first-child) {
         display: none;
     }
-
     .choose-text {
         font-size: 20px;
         padding: 35px 5px;
     }
-
+    #selectedImg {
+        width: 94%;
+        max-width: 275px;
+    }
     .example {
-        background-size: 100% 100%;
-        width: 264px;
-        height: 152px;
         margin: 7px 11px;
     }
     .next-btn-choose {
