@@ -362,9 +362,9 @@ var addEffect = Vue.component('add-effect', {
 
 
 
-        this.$nextTick(function () {
-            drawing();
-        })
+        //this.$nextTick(function () {
+        //    drawing();
+        //})
     },
 })
 
