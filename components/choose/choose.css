@@ -14,16 +14,12 @@
     max-width: 1920px;
 }
 
-.ex {
-    height: 165px;
-}
-
 .example {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    max-width: 495px;
-    width: 94%;
+    width: 495px;
+    height: 276px;
     margin: 10px 15px;
     position: relative;
     box-shadow: 0 0 10px 8px rgb(159, 72, 240);
@@ -56,6 +52,15 @@
     border-radius: 50px;
     padding: 9px 67px;
 }
+#selectedImg {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    max-width: 495px;
+    margin: 10px 15px;
+    position: relative;
+    box-shadow: 0 0 10px 8px rgb(159 72 240);
+}
 
 .next-btn-choose {
     margin-top: 40px;
@@ -78,10 +83,11 @@
     }
     #selectedImg {
         width: 94%;
-        max-width: 275px;
     }
     .example {
         margin: 7px 11px;
+        width: 261px;
+        height: 149px;
     }
     .next-btn-choose {
         font-size: 20px;
