@@ -26,7 +26,7 @@ var addInfo = Vue.component('add-info', {
                     <p class='option' @click='selectPozd(3)' :data-checked='optionValue == "3" ? "true" : "false"' data-value='3'>Поздравляю с 8 Марта! Желаю счастливых событий и классного настроения на территории весны.
                     </p>
                     <p class='option' @click='selectPozd(4)' :data-checked='optionValue == "4" ? "true" : "false"' data-value='4'>Поздравляю с Международным женским днём! Пусть новые возможности открываются, как бутоны любимых цветов.</p>
-                    <p class='option' @click='selectPozd(5)' :data-checked='optionValue == "5" ? "true" : "false"' data-value='5'>Поздравляю с праздников весны! Пусть мир дарит красоту и вдохновение, а близкие люди – любовь и счастье.</p>
+                    <p class='option' @click='selectPozd(5)' :data-checked='optionValue == "5" ? "true" : "false"' data-value='5'>Поздравляю с праздником весны! Пусть мир дарит красоту и вдохновение, а близкие люди – любовь и счастье.</p>
                     <p class='option' @click='selectPozd(6)' :data-checked='optionValue == "6" ? "true" : "false"' data-value='6'>Поздравляю с праздником весны! Пусть будет много солнечных дней и приятных сюрпризов.</p>
                 </div>
                 <textarea id='textareaData' :value='getPreparedSlogan(optionValue)' placeholder="Выбери вариант поздравления" readonly></textarea>
