@@ -255,11 +255,13 @@ var addEffect = Vue.component('add-effect', {
         }
         draw = document.getElementById('selectedImg');
         let rectTmp = draw.getBoundingClientRect();
+        console.log(rectTmp.width);
         if (rectTmp.width < 400) {
-            widthAspect = 1920 / rectTmp.width / 2;
+            widthAspect = 1920 / rectTmp.width / 1.5;
         } else {
             widthAspect = 1920 / rectTmp.width;
         }
+        console.log(widthAspect);
         drawContext = draw.getContext("2d")
 
         function clicked(e) {
